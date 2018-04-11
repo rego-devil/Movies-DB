@@ -5,3 +5,5 @@ How to run
 * npm install
 * npm run start
 * npm run build
+
+open http://localhost:3000/ in your browser
