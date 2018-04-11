@@ -1,5 +1,5 @@
 How to run
 =====================
-* nmp install
+* npm install
 * npm run start
 * npm run build
