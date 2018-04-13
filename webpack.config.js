@@ -13,7 +13,7 @@ const config = {
   watch: true,
   
   entry: {
-    javascript: APP_DIR + "/index"
+    javascript: APP_DIR + "/client/app"
   },
   output: {
     path: BUILD_DIR,
@@ -32,7 +32,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       // favicon: `${APP_DIR}/favicon.ico`,
-      template: `${APP_DIR}/index.html`,
+      template: `${APP_DIR}/client/index.html`,
       inject: false
     })
   ]
