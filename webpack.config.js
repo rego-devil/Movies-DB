@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-
 const path = require("path");
 
 const APP_DIR = path.resolve(__dirname, "src");
@@ -8,34 +6,48 @@ const BUILD_DIR = path.resolve(__dirname, "public");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
-const config = {
+module.exports = {
+  context: path.resolve(__dirname, "src"),
   mode: "development",
   watch: true,
+  devtool: 'source-map',
   
   entry: {
-    javascript: APP_DIR + "/client/app"
+    javascript: './client/app'
   },
+
   output: {
-    path: BUILD_DIR,
-    filename: "[name].bundle.js"
+    filename: "[name].bundle.js",
+    path: BUILD_DIR
   },
+
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      use: ['babel-loader'],
-    }]
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      }
+    ]
   },
+
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+
   plugins: [
     new HtmlWebpackPlugin({
-      // favicon: `${APP_DIR}/favicon.ico`,
-      template: `${APP_DIR}/client/index.html`,
-      inject: false
+      title: "Movies-DB",
+      template: "./client/index.html"
+      // template: `${APP_DIR}/client/index.html`,
+      // inject: false
     })
-  ]
-}
+  ],
 
-module.exports = config;
+  devServer: {
+    // compress: true,
+    // port: 9000,
+    // contentBase: BUILD_DIR,
+    // publicPath: '/',
+  }
+}
