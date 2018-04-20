@@ -5,6 +5,6 @@ How to run
 * npm install
 * npm run server-express
 * npm run build
-* npm test
+* npm test ( for start test)
 
 open http://localhost:3000/ in your browser
