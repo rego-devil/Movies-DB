@@ -8,8 +8,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
-  mode: "development",
-  watch: true,
   devtool: 'source-map',
   
   entry: {
