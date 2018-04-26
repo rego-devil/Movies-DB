@@ -3,7 +3,8 @@ const path = require("path");
 const APP_DIR = path.resolve(__dirname, "src");
 const BUILD_DIR = path.resolve(__dirname, "public");
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = {
@@ -25,6 +26,25 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+      {
+        test: /\.less?$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            { loader: "css-loader" }, // translates CSS into CommonJS
+            { loader: "less-loader"}  // compiles Less to CSS
+          ],
+          fallback: "style-loader"   // creates style nodes from JS strings
+        })
+      },
+      {
+        test: /\.(png|jpg|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}  
+          }
+        ]
       }
     ]
   },
@@ -39,6 +59,10 @@ module.exports = {
       template: "./client/index.html"
       // template: `${APP_DIR}/client/index.html`,
       // inject: false
+    }),
+    new ExtractTextPlugin({
+      filename: "style.css",
+      disable: process.env.NODE_ENV === "development"
     })
   ],
 
@@ -49,3 +73,5 @@ module.exports = {
     // publicPath: '/',
   }
 }
+
+console.log(process.env.NODE_ENV);

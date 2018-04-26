@@ -1,0 +1,85 @@
+.header {
+	background: url('img/back.jpg') no-repeat center center;
+	background-size: cover;
+	color: #fff;
+  
+	&__title {
+		text-transform: uppercase;
+		padding: 10px 0 10px 0;
+	}
+
+	&__siteName {
+		padding: 10px 0 0 0;
+		color: red;
+	}
+}
+
+.search {
+	&__input {
+		height: 40px;
+		padding: 0 18px 0 18px;
+		display: block;
+		background: #000;
+		color: #fff;
+		width: 100%;
+		font-size: 1.5rem;
+		font-family: Roboto, sans-serif;
+		outline: none;
+		resize: none;
+		border: none;
+		border-bottom: 1px solid rgb(255, 94, 94);
+	}
+
+	&__button {
+		line-height: 38px;
+		background: red;
+		color: #fff;
+		display: inline-block;
+		text-align: center;
+		cursor: pointer;
+		outline: none;
+		padding: 0 10px;
+		font-size: 1rem;
+		border: 1px solid transparent;
+		white-space: nowrap;
+		width: 200px;
+		
+
+		&:hover {
+			background: rgb(255, 94, 94);
+		}
+
+		&:active {
+			background: rgb(165, 40, 40);
+		}
+	}
+
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px 0 0 0;
+	}
+
+	&__filter {
+		display: flex;
+		align-items: center;
+	}
+
+	&__filterText {
+		text-transform: uppercase;
+		color: #fff;
+	}
+
+	&__filterItem {
+		background: #888888;
+		display: inline-block;
+		padding: 4px 10px;
+		margin-left: 5px;
+		cursor: pointer;
+
+		&--active {
+			background: red;
+		}
+	}
+}
