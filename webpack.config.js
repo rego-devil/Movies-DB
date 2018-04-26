@@ -28,11 +28,25 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader']
+      },
+      {
         test: /\.less?$/,
         use: ExtractTextPlugin.extract({
           use: [
-            { loader: "css-loader" }, // translates CSS into CommonJS
-            { loader: "less-loader"}  // compiles Less to CSS
+            { 
+              loader: "css-loader" // translates CSS into CommonJS
+            }, 
+            { 
+              loader: "less-loader", // compiles Less to CSS
+              options: { 
+                sourceMap: true,
+                paths: [
+                  path.resolve(__dirname, 'node_modules')
+                ]
+              }
+            }  
           ],
           fallback: "style-loader"   // creates style nodes from JS strings
         })
@@ -42,7 +56,10 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: {}  
+            options: {
+              outputPath: 'img/',
+              name: '[name].[ext]'
+            }  
           }
         ]
       }
@@ -50,7 +67,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', 'less'],
   },
 
   plugins: [
@@ -74,4 +91,4 @@ module.exports = {
   }
 }
 
-console.log(process.env.NODE_ENV);
+// console.log(__webpack_public_path__);
