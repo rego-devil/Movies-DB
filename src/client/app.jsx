@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header } from './components/header';
+import { Header, Main } from './components';
 import style from './styles/index.less';
 
 const App = () => (
   <React.Fragment>
       <Header />
+      <Main />
   </React.Fragment>
 )
 

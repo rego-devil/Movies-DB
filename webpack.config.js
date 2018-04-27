@@ -86,9 +86,7 @@ module.exports = {
   devServer: {
     // compress: true,
     // port: 9000,
-    // contentBase: BUILD_DIR,
+    // contentBase: path.join(__dirname, "public"),
     // publicPath: '/',
   }
 }
-
-// console.log(__webpack_public_path__);

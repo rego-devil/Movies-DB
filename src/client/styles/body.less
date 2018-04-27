@@ -1,0 +1,36 @@
+.filmItem {
+  display: block;
+  background: white;
+
+  &__img {
+      display: block;
+      max-width: 100%;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__releaseYear {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 3px 5px;
+  }
+
+  &__title {
+
+  }
+}
+
+.filmList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 0 0 0;
+
+  .filmItem {
+      flex: 0 0 200px;
+      margin: 20px 20px;
+  }
+}
