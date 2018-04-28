@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Header, Main } from './components';
-import style from './styles/index.less';
+// import style from './styles/index.less';
 
 const App = () => (
   <React.Fragment>

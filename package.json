@@ -34,7 +34,7 @@
     "server": "node src/server/server.js",
     "start": "set NODE_ENV=development&&webpack --mode development --watch",
     "build": "set NODE_ENV=production&&webpack --mode production --watch",
-    "dev-server": "set NODE_ENV=development && webpack-dev-server --hot --inline --mode development",
+    "dev-server": "set NODE_ENV=development&&webpack-dev-server",
     "test": "jest"
   },
   "repository": {

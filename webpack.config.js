@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 const APP_DIR = path.resolve(__dirname, "src");
 const BUILD_DIR = path.resolve(__dirname, "public");
@@ -6,11 +7,13 @@ const BUILD_DIR = path.resolve(__dirname, "public");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const isDevelopment = process.env.NODE_ENV != "production";
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
   devtool: 'source-map',
-  
+  mode: isDevelopment ? "development" : "production",
+
   entry: {
     javascript: './client/app'
   },
@@ -80,13 +83,15 @@ module.exports = {
     new ExtractTextPlugin({
       filename: "style.css",
       disable: process.env.NODE_ENV === "development"
-    })
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
 
   devServer: {
-    // compress: true,
-    // port: 9000,
-    // contentBase: path.join(__dirname, "public"),
-    // publicPath: '/',
+    hot: true,
+    inline: true,
+    open: true,
+    port: 9000
   }
 }
