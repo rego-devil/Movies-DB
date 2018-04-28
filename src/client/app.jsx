@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header, Main } from './components';
-// import style from './styles/index.less';
+import { Header, Main, Footer } from './components';
+import style from './styles/index.scss';
 
 const App = () => (
   <React.Fragment>
       <Header />
       <Main />
+      <Footer />
   </React.Fragment>
 )
 

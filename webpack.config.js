@@ -7,12 +7,10 @@ const BUILD_DIR = path.resolve(__dirname, "public");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const isDevelopment = process.env.NODE_ENV != "production";
-
 module.exports = {
   context: path.resolve(__dirname, "src"),
   devtool: 'source-map',
-  mode: isDevelopment ? "development" : "production",
+  mode: process.env.NODE_ENV === "development" ? "development" : "production",
 
   entry: {
     javascript: './client/app'
@@ -35,20 +33,19 @@ module.exports = {
         use: [ 'style-loader', 'css-loader']
       },
       {
-        test: /\.less?$/,
+        test: /\.scss?$/,
         use: ExtractTextPlugin.extract({
           use: [
             { 
               loader: "css-loader" // translates CSS into CommonJS
             }, 
             { 
-              loader: "less-loader", // compiles Less to CSS
-              options: { 
-                sourceMap: true,
-                paths: [
-                  path.resolve(__dirname, 'node_modules')
-                ]
-              }
+              loader: "sass-loader", // compiles Less to CSS
+              // options: { 
+              //   paths: [
+              //     path.resolve(__dirname, 'node_modules')
+              //   ]
+              // }
             }  
           ],
           fallback: "style-loader"   // creates style nodes from JS strings
@@ -70,7 +67,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', 'less'],
+    extensions: ['.js', '.jsx', 'scss'],
   },
 
   plugins: [
@@ -91,7 +88,8 @@ module.exports = {
   devServer: {
     hot: true,
     inline: true,
-    open: true,
-    port: 9000
+    port: 9000,
+    // publicPath: "/",
+    // contentBase: "./public",
   }
 }

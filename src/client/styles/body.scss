@@ -1,6 +1,5 @@
 .filmItem {
   display: block;
-  background: white;
 
   &__img {
       display: block;
@@ -10,6 +9,8 @@
   &__description {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 0 0;
   }
 
   &__releaseYear {
@@ -18,19 +19,30 @@
     padding: 3px 5px;
   }
 
-  &__title {
-
+  &__genre {
+    color: gray;
+    font-size: 0.75rem;
   }
+
+  &__title {}
+
 }
 
 .filmList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   padding: 0 0 0 0;
 
   .filmItem {
       flex: 0 0 200px;
       margin: 20px 20px;
+  }
+}
+
+.filmDetails {
+  display: flex;
+  
+  &__img {
+    
   }
 }

@@ -6,7 +6,7 @@ export const FilmItem = ({title, genre, date, imgUrl}) => (
     <div className="filmItem__description">
         <div className="filmItem__title">{title}</div>
         <div className="filmItem__releaseYear">{date}</div>
-        
     </div>
+    <div className="filmItem__genre">{genre}</div>
   </React.Fragment>
 )

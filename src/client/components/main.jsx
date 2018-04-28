@@ -1,15 +1,10 @@
 import React from 'react';
-import {FilmItem} from './';
-import filmList from '../data/films.json';
+import {FilmList} from './';
 
 export const Main = () => (
   <div className="main">
-      <div className="wrapper">
-	  		<ul className="filmList">
-			{
-				filmList.map(item => <li key={item.id} className="filmItem"><FilmItem {...item} /></li>)
-			}
-			</ul>
+    	<div className="wrapper">
+				<FilmList />
       </div>
   </div>
 )
