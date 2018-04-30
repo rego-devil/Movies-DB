@@ -1,15 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header, Main, Footer } from './components';
+import { Header, Main} from './components';
+import {Context} from './components/context';
 import style from './styles/index.scss';
+ 
 
-const App = () => (
-  <React.Fragment>
-      <Header />
-      <Main />
-      <Footer />
-  </React.Fragment>
-)
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      onSearch: this.handleSearch.bind(this),
+      searching: false,
+      showFilmDetails: false,
+      onShowFilmDetails: this.handleFilmDetails.bind(this)
+    }
+  }
+
+  handleSearch() {
+    this.setState({searching: true})
+  }
+
+  handleFilmDetails(value) {
+    this.setState({showFilmDetails: value})
+  }
+
+  render() {
+    return (
+      <Context.Provider value={this.state}>
+        <Header />
+        <Main />
+      </Context.Provider>
+    )
+  }
+}
 
 ReactDOM.render(
   <App />,

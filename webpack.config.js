@@ -40,7 +40,7 @@ module.exports = {
               loader: "css-loader" // translates CSS into CommonJS
             }, 
             { 
-              loader: "sass-loader", // compiles Less to CSS
+              loader: "sass-loader", // compiles SCCC to CSS
               // options: { 
               //   paths: [
               //     path.resolve(__dirname, 'node_modules')
@@ -86,8 +86,8 @@ module.exports = {
   ],
 
   devServer: {
-    hot: true,
-    inline: true,
+    // hot: true,
+    // inline: true,
     port: 9000,
     // publicPath: "/",
     // contentBase: "./public",
