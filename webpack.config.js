@@ -6,6 +6,7 @@ const BUILD_DIR = path.resolve(__dirname, "public");
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
@@ -34,22 +35,23 @@ module.exports = {
       },
       {
         test: /\.scss?$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            { 
-              loader: "css-loader" // translates CSS into CommonJS
-            }, 
-            { 
-              loader: "sass-loader", // compiles SCCC to CSS
-              // options: { 
-              //   paths: [
-              //     path.resolve(__dirname, 'node_modules')
-              //   ]
-              // }
-            }  
-          ],
-          fallback: "style-loader"   // creates style nodes from JS strings
-        })
+        use: [
+          process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {loader: 'css-loader', options: { minimize: true }},
+          // 'postcss-loader',
+          'sass-loader',
+        ]
+        // use: ExtractTextPlugin.extract({
+        //   use: [
+        //     { 
+        //       loader: "css-loader" // translates CSS into CommonJS
+        //     }, 
+        //     { 
+        //       loader: "sass-loader", // compiles SCCC to CSS
+        //     }  
+        //   ],
+        //   fallback: "style-loader"   // creates style nodes from JS strings
+        // })
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
@@ -74,15 +76,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Movies-DB",
       template: "./client/index.html"
-      // template: `${APP_DIR}/client/index.html`,
       // inject: false
     }),
-    new ExtractTextPlugin({
-      filename: "style.css",
-      disable: process.env.NODE_ENV === "development"
-    }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    // new ExtractTextPlugin({
+    //   filename: "style.css",
+    //   disable: process.env.NODE_ENV === "development"
+    // }),
+    new MiniCssExtractPlugin({
+      filename: "style.css"
+    })
+    // new webpack.NamedModulesPlugin(),
+    // new webpack.HotModuleReplacementPlugin()
   ],
 
   devServer: {

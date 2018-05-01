@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Header, Main} from './components';
 import {Context} from './components/context';
+import {ErrorBoundary} from './error-boundary';
 import style from './styles/index.scss';
  
 
@@ -27,10 +28,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <Context.Provider value={this.state}>
-        <Header />
-        <Main />
-      </Context.Provider>
+        <Context.Provider value={this.state}>
+          <ErrorBoundary>
+            <Header />
+            <Main />
+          </ErrorBoundary>
+        </Context.Provider>
     )
   }
 }
