@@ -49,9 +49,6 @@ export class Search extends React.Component {
 										<SearchFilterItem key={item} name={item} isActive={ i===selectedTab }  onActive={() => this.handleActive(item, i)} />
 									)
 								}
-								
-								{/* <span className={`search__filterItem`} onClick={() => this.handleSearchBy('title', 1)}>title</span>
-								<span className={`search__filterItem`} onClick={() => this.handleSearchBy('director', 2)}>Director</span> */}
 							</div>
 							<button className="search__button" onClick={onSearch}>Search</button>
 						</div>
