@@ -7,33 +7,31 @@ import style from './styles/index.scss';
  
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
-      onSearch: this.handleSearch.bind(this),
-      searching: false,
-      showFilmDetails: false,
-      onShowFilmDetails: this.handleFilmDetails.bind(this)
+		onSearch: this.handleSearch.bind(this),
+		searching: false,
+		showFilmDetails: false,
+		onShowFilmDetails: this.handleFilmDetails.bind(this)
     }
   }
 
   handleSearch() {
-    this.setState({searching: true})
+    	this.setState({searching: true})
   }
 
   handleFilmDetails(value) {
-    this.setState({showFilmDetails: value})
+   	 this.setState({showFilmDetails: value})
   }
 
   render() {
     return (
-        <Context.Provider value={this.state}>
-          <ErrorBoundary>
-            <Header />
-            <Main />
-          </ErrorBoundary>
-        </Context.Provider>
+        <ErrorBoundary>
+          	<Header {...this.state} />
+          	<Main {...this.state} />
+        </ErrorBoundary>
     )
   }
 }
@@ -42,14 +40,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('app')
 );
-
-
-// import { HelloFunctionalComponent, HelloComponent, HelloCreateElement, HelloPureComponent } from './components/hello';
-// const App = () => (
-//   <div>
-//       <HelloFunctionalComponent />
-//       <HelloComponent />
-//       {HelloCreateElement}
-//       <HelloPureComponent />
-//   </div>
-// )

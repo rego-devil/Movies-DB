@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`film Sort component renders without crashing 1`] = `
+<div
+  className="filmInfo"
+>
+  <div
+    className="filmInfo__count"
+  >
+    7 film found
+  </div>
+  <div
+    className="filmInfo__sortBy"
+  >
+    Sort by:
+    <span
+      className="filmInfo__sortByActive"
+    >
+      release date
+    </span>
+    <span>
+      rating
+    </span>
+  </div>
+</div>
+`;

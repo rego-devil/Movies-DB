@@ -1,0 +1,12 @@
+{
+  "verbose": true,
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest"
+  },
+  "moduleFileExtensions": [
+    "js",
+    "jsx"
+  ],
+  "setupFiles": ["./jestsetup.js"],
+  "snapshotSerializers": ["enzyme-to-json/serializer"]
+}

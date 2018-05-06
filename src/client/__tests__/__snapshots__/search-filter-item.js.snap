@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Filter item component renders without crashing 1`] = `
+<span
+  className="search__filterItem "
+/>
+`;

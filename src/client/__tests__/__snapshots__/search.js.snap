@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component renders without crashing 1`] = `
+<div
+  className="search"
+>
+  <div
+    className="search__title"
+  >
+    Find your Movie
+  </div>
+  <input
+    className="search__input"
+    onInput={[Function]}
+    type="text"
+    value=""
+  />
+  <div
+    className="search__bottom"
+  >
+    <div
+      className="search__filter"
+    >
+      <span
+        className="search__filterText"
+      >
+        Search By:
+      </span>
+      <SearchFilterItem
+        isActive={true}
+        key="title"
+        name="title"
+        onActive={[Function]}
+      />
+      <SearchFilterItem
+        isActive={false}
+        key="director"
+        name="director"
+        onActive={[Function]}
+      />
+    </div>
+    <button
+      className="search__button"
+    >
+      Search
+    </button>
+  </div>
+</div>
+`;

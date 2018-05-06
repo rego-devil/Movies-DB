@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`film Item component renders without crashing 1`] = `
+<div
+  className="filmItem"
+  onClick={[Function]}
+>
+  <img
+    className="filmItem__img"
+  />
+  <div
+    className="filmItem__description"
+  >
+    <div
+      className="filmItem__title"
+    />
+    <div
+      className="filmItem__releaseYear"
+    />
+  </div>
+  <div
+    className="filmItem__genre"
+  />
+</div>
+`;

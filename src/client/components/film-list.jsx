@@ -3,26 +3,32 @@ import {FilmItem, FilmSort} from './';
 import filmListJson from '../data/films.json';
 import {Context} from './context';
 
-export const FilmList = () => (
-	<Context.Consumer>
-		{
-		    ({searching, onShowFilmDetails}) => (
-				!searching ? <div className="noFilms">No films found</div> : (
+export class FilmList extends React.Component {
+	constructor() {
+		super();
+	}
 
-					<React.Fragment>
-						<FilmSort />
-						<ul className="filmList">
-							{
-								filmListJson.map((item) => 
-									<li key={item.id} className="filmItem" onClick={onShowFilmDetails.bind(null, true)}>
-										<FilmItem {...item} />
-									</li>
-								)
-							}
-						</ul>
-					</React.Fragment>
-				)
+	render() {
+		const {searching, onShowFilmDetails} = this.props;
+		return (
+			!searching ? (
+				<div className="noFilms">No films found</div> 
+			) : (
+				<React.Fragment>
+					<FilmSort />
+					<ul className="filmList">
+						{
+							filmListJson.map((item) => 
+								<li key={item.id}>
+									<FilmItem {...item} onShowFilmDetails={onShowFilmDetails} />
+								</li>
+							)
+						}
+					</ul>
+				</React.Fragment>
 			)
-		}
-	</Context.Consumer>
-)
+		) 
+	}
+}
+
+

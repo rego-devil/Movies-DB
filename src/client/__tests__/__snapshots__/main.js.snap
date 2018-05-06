@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main  component renders without crashing 1`] = `
+<div
+  className="main"
+>
+  <div
+    className="wrapper"
+  >
+    <FilmList />
+  </div>
+</div>
+`;

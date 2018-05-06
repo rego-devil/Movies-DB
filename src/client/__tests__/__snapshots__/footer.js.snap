@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header  component renders without crashing 1`] = `
+<div
+  className="footer"
+>
+  <div
+    className="wrapper"
+  >
+    Project Name
+  </div>
+</div>
+`;
