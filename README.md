@@ -6,5 +6,6 @@ How to run
 * npm run server
 * npm run start
 * npm test ( for start test )
+* npm run test:coverage ( tesing with coverage table )
 
 open http://localhost:3000/ in your browser
