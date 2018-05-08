@@ -20,4 +20,13 @@ describe('Search component', () => {
         expect(wrapper.find('.search__input').prop('value')).toEqual('Some text in input');
         
     });
+
+    test('input data in textBox', () => {
+        const wrapper = mount(<Search  />);
+        wrapper.find('.search__input').simulate('change', {
+            target: { value: 'Input some text' }
+        });
+
+        expect(wrapper.state('inputValue')).toBe('Input some text');
+    });
 });

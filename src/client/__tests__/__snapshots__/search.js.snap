@@ -11,7 +11,7 @@ exports[`Search component renders without crashing 1`] = `
   </div>
   <input
     className="search__input"
-    onInput={[Function]}
+    onChange={[Function]}
     type="text"
     value=""
   />

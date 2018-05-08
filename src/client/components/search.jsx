@@ -36,7 +36,7 @@ export class Search extends React.Component {
 		return (
 			<div className="search">
 				<div className="search__title">Find your Movie</div>
-				<input type="text" className="search__input" value={inputValue} onInput={this.handleInput} />
+				<input type="text" className="search__input" value={inputValue} onChange={this.handleInput} />
 				<div className="search__bottom">
 					<div className="search__filter">
 						<span className="search__filterText">Search By:</span>
