@@ -1,6 +1,5 @@
 import React from 'react';
 import {FilmItem, FilmSort} from './';
-import filmListJson from '../data/films.json';
 import {Context} from './context';
 
 export class FilmList extends React.Component {
@@ -9,7 +8,7 @@ export class FilmList extends React.Component {
 	}
 
 	render() {
-		const {searching, onShowFilmDetails} = this.props;
+		const {searching, onShowFilmDetails, filmList} = this.props;
 		return (
 			!searching ? (
 				<div className="noFilms">No films found</div> 
@@ -18,7 +17,7 @@ export class FilmList extends React.Component {
 					<FilmSort />
 					<ul className="filmList">
 						{
-							filmListJson.map((item) => 
+							filmList.map((item) => 
 								<li key={item.id}>
 									<FilmItem {...item} onShowFilmDetails={onShowFilmDetails} />
 								</li>

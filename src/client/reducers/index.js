@@ -1,0 +1,1 @@
+export {filmReducer} from './films';

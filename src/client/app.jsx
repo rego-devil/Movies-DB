@@ -1,10 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header, Main} from './components';
-import {Context} from './components/context';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 import {ErrorBoundary} from './error-boundary';
+import { Header, Main} from './components';
+import { startFetchFilms, getFilms } from './actions';
+import { FilmListContainer } from './containers/film-list-container';
+import { filmReducer } from './reducers';
 import style from './styles/index.scss';
- 
+// import {Context} from './components/context';
+
+
+const reducers = combineReducers({
+  filmState: filmReducer,
+});
+
+const store = createStore(
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 class App extends React.Component {
   constructor() {
@@ -18,8 +32,16 @@ class App extends React.Component {
     }
   }
 
+
   handleSearch() {
-    	this.setState({searching: true})
+      this.setState({searching: true});
+      store.dispatch(startFetchFilms());
+
+      fetch('http://react-cdp-api.herokuapp.com/movies?limit=100').then((response) => {
+        return response.json();
+      }).then((films) => {
+        store.dispatch(getFilms(films.data));
+      }).catch(alert);
   }
 
   handleFilmDetails(value) {
@@ -37,6 +59,8 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+      <App />
+  </Provider>,
   document.getElementById('app')
 );
