@@ -90,9 +90,9 @@ module.exports = {
   ],
 
   devServer: {
-    // hot: true,
-    // inline: true,
+    hot: true,
     port: 9000,
+    // inline: true,
     // publicPath: "/",
     // contentBase: "./public",
   }
