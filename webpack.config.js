@@ -90,7 +90,7 @@ module.exports = {
   ],
 
   devServer: {
-    hot: true,
+    // hot: true,
     port: 9000,
     // inline: true,
     // publicPath: "/",

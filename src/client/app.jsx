@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import {ErrorBoundary} from './error-boundary';
-import { Header, Main} from './components';
+import { Main} from './pages';
 import { startFetchFilms, getFilms } from './actions';
-import { FilmListContainer } from './containers/film-list-container';
-import { filmReducer } from './reducers';
+import { filmReducer, statusReducer } from './reducers';
 import style from './styles/index.scss';
 // import {Context} from './components/context';
 
 
 const reducers = combineReducers({
   filmState: filmReducer,
+  statusState: statusReducer,
 });
 
 const store = createStore(
@@ -25,16 +25,13 @@ class App extends React.Component {
     super();
 
     this.state = {
-		onSearch: this.handleSearch.bind(this),
-		searching: false,
-		showFilmDetails: false,
-		onShowFilmDetails: this.handleFilmDetails.bind(this)
+		  onSearch: this.handleSearch.bind(this),
     }
   }
 
 
   handleSearch() {
-      this.setState({searching: true});
+    console.log('222');
       store.dispatch(startFetchFilms());
 
       fetch('http://react-cdp-api.herokuapp.com/movies?limit=100').then((response) => {
@@ -44,15 +41,11 @@ class App extends React.Component {
       }).catch(alert);
   }
 
-  handleFilmDetails(value) {
-   	 this.setState({showFilmDetails: value})
-  }
 
   render() {
     return (
         <ErrorBoundary>
-          	<Header {...this.state} />
-          	<Main {...this.state} />
+          <Main {...this.state} />
         </ErrorBoundary>
     )
   }

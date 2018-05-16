@@ -1,31 +1,28 @@
 import React from 'react';
-import {Context} from './context';
+import propTypes from 'prop-types';
 
-export class FilmItem extends React.Component { 
-	constructor() {
-		super();
 
-		this._onShowFilmDetails = this._onShowFilmDetails.bind(this);
-	}
+export const FilmItem = ({title, genres, release_date, poster_path}) => {
 
-	_onShowFilmDetails() {
-		this.props.onShowFilmDetails(true);
-	}
+	let genreList = genres.map((item,i) => {
+		return (i > 0 ? ', ':'') + item;
+	});
 
-	render() {
-		const {title, genre, date, imgUrl} = this.props;
-		return (
-			<div className="filmItem" onClick={this._onShowFilmDetails} >
-
-				<img src={imgUrl} className="filmItem__img" />
-				<div className="filmItem__description">
-						<div className="filmItem__title">{title}</div>
-						<div className="filmItem__releaseYear">{date}</div>
-				</div>
-				<div className="filmItem__genre">{genre}</div>
-
+	return (
+		<React.Fragment>
+			<img src={poster_path} className="filmItem__img" />
+			<div className="filmItem__description">
+					<div className="filmItem__title">{title}</div>
+					<div className="filmItem__releaseYear">{release_date.split('-')[0]}</div>
 			</div>
-		)
-	}
-	
+			<div className="filmItem__genre">{genreList}</div>
+		</React.Fragment>
+	)
+}
+
+FilmItem.propTypes = {
+	title: propTypes.string.isRequired,
+	release_date: propTypes.string.isRequired,
+	poster_path: propTypes.string.isRequired,
+	genres: propTypes.array,
 }

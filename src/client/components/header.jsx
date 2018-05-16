@@ -16,6 +16,7 @@ export class Header extends React.Component {
 
     render() {
         const {showFilmDetails, onShowFilmDetails, onSearch} = this.props;
+        console.log(showFilmDetails);
         return (
             <div className="header">
                 <div className="wrapper">

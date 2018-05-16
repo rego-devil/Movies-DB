@@ -1,16 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { showFilmDetails } from '../actions';
-import {FilmList} from '../components';
+import {Header} from '../components';
 
-const mapStateToProps = (store) => {
-    return {
-        filmList: store.filmState.films
-    }
-}
+const mapStateToProps = (store) => ({
+    showFilmDetails: store.statusState.showFilmDetails
+})
 
 const mapDispatchToProps = (dispatch) => ({
     onShowFilmDetails: (bool) => dispatch(showFilmDetails(bool))
 })
 
-export const FilmListContainer =  connect(mapStateToProps, mapDispatchToProps)(FilmList);
+export const HeaderContainer =  connect(mapStateToProps, mapDispatchToProps)(Header);
