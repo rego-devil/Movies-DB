@@ -1,2 +1,2 @@
-export {startFetchFilms, getFilms} from './films';
+export {startFetchFilms, getFilms, asyncGetFilms} from './films';
 export {showFilmDetails} from './status';

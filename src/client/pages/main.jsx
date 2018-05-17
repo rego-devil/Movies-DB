@@ -6,7 +6,7 @@ export const Main = (props) => {
 //   {throw  new Error('I crashed!')}
   return (
     <React.Fragment>
-        <HeaderContainer {...props} />
+        <HeaderContainer />
         <div className="main">
             <div className="wrapper">
                 <FilmListContainer />

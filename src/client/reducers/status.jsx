@@ -1,12 +1,12 @@
-const initialState = {
-    showFilmDetails: false,
-}
+// const initialState = {
+// }
 
-export const statusReducer = (state = initialState, action) => {
-    switch(action.type) {
-        case 'SHOW_FILM_DETAILS':
-            return {...state, showFilmDetails: action.payload }
-    }
+// export const statusReducer = (state = initialState, action) => {
 
-    return state; 
-}
+//     switch(action.type) {
+//         case 'SHOW_FILM_DETAILS':
+//             return {...state, currentFilmDetails: action.payload }
+//     }
+
+//     return state; 
+// }

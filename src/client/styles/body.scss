@@ -46,8 +46,9 @@
   color: #fff;
   
   &__img {
-    flex: 0 0 200px;
+    flex: 0 0 auto;
     margin-right: 30px;
+    height: 200px;
   }
 
   &__description {
@@ -82,8 +83,9 @@
     
   }
 
-  &__duration {
-    
+  &__genres {
+    padding-top: 30px;
+    color: gray;
   }
 
   &__date {

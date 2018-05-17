@@ -1,6 +1,7 @@
 const initialState = {
     isFetching: false,
-    films: []
+    films: [],
+    currentFilmDetails: null,
 }
 
 export const filmReducer = (state = initialState, action) => {
@@ -9,6 +10,8 @@ export const filmReducer = (state = initialState, action) => {
             return {...state, isFetching: true }
         case 'GET_FILMS_SUCCESS' :
             return {...state, isFetching: false, films: action.payload }
+        case 'SHOW_FILM_DETAILS':
+            return {...state, currentFilmDetails: action.payload }
     }
 
     return state; 

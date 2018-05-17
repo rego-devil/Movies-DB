@@ -4,16 +4,10 @@ import {FilmItem, FilmSort} from './';
 export class FilmList extends React.Component {
 	constructor() {
 		super();
-
-		this._onShowFilmDetails = this._onShowFilmDetails.bind(this);
-	}
-
-	_onShowFilmDetails() {
-		this.props.onShowFilmDetails(true);
 	}
 
 	render() {
-		const {filmList} = this.props;		
+		const {filmList, onShowFilmDetails, onSelectFilm} = this.props;		
 		return (
 			filmList.length > 0 ? (
 				<React.Fragment>
@@ -21,7 +15,7 @@ export class FilmList extends React.Component {
 				<ul className="filmList">
 					{
 						filmList.map((item) => 
-							<li key={item.id} className="filmItem" onClick={this._onShowFilmDetails}>
+							<li key={item.id} className="filmItem" onClick={() =>  onShowFilmDetails(item) }>
 								<FilmItem {...item} />
 							</li>
 						)
