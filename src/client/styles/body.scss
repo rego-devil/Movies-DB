@@ -42,8 +42,9 @@
 
 .filmDetails {
   display: flex;
-  margin: 20px 0 0 0;
+  padding-top: 10px;
   color: #fff;
+  position: relative;
   
   &__img {
     flex: 0 0 auto;
@@ -104,14 +105,24 @@
   &__cast {
     padding: 20px 0 0 0;
   }
+
+  &__backToSearch {
+		background: #fff;
+		color: red;
+		border-radius: 5px;
+		padding: 5px 7px;
+		border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 10px;
+	}
 }
 
 .filmInfo {
-  padding: 20px 0 0 0;
+  padding: 20px 20px 0 20px;
   display: flex;
   justify-content: space-between;
-  max-width: 1000px;
-  margin: 0 auto;
 
   &__count {
 
