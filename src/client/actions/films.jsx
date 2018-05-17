@@ -1,3 +1,5 @@
+import Api from '../api';
+
 export const startFetchFilms = () => ({
     type: 'START_FETCH_FILMS_REQUEST'
 })
@@ -7,17 +9,23 @@ export const getFilms = (items) => ({
     payload: items
 })
 
-export const asyncGetFilms = () => {
-    return (dispatch) => {
+export const showFilmDetails = (value) => ({
+    type: 'SHOW_FILM_DETAILS',
+    payload: value
+})
 
+export const asyncGetFilms = (filterData = {}) => {
+    return (dispatch) => {
+        
         dispatch(startFetchFilms());
         
-        fetch('http://react-cdp-api.herokuapp.com/movies?limit=20').then(response => {
-            return response.json();
-        }).then(films => {
+        new Api(filterData).fetchJSON().then(films => {
+
             dispatch(getFilms(films.data));
+
         }).catch(error => {
             throw new Error(`ERROR!!! ${error}`);
         });
+
     }
 }

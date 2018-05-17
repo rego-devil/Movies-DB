@@ -8,8 +8,8 @@ const mapStateToProps = (store) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onShowFilmDetails: (bool) => dispatch(showFilmDetails(bool)),
-    onSearch: () => dispatch(asyncGetFilms())
+    onShowFilmDetails: (obj) => dispatch(showFilmDetails(obj)),
+    onSearch: (filterData) => dispatch(asyncGetFilms(filterData))
 })
 
 export const HeaderContainer =  connect(mapStateToProps, mapDispatchToProps)(Header);

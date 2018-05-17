@@ -11,7 +11,7 @@ export class FilmList extends React.Component {
 		return (
 			filmList.length > 0 ? (
 				<React.Fragment>
-				<FilmSort />
+				<FilmSort count={filmList.length} />
 				<ul className="filmList">
 					{
 						filmList.map((item) => 

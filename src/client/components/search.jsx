@@ -1,5 +1,4 @@
 import React from 'react';
-import {SearchFilterItem} from './';
 import {Context} from './context';
 
 export class Search extends React.Component {
@@ -11,42 +10,45 @@ export class Search extends React.Component {
 		
 
 		this.state = {
-			inputValue: '',
-			searchBy: 'Title',
-			selectedTab: 0
+			search: '',
+			searchBy: 'title'
 		}
 		
 	}
 
 	handleInput(e) {
-		this.setState({inputValue: e.target.value})
+		console.log(e.target.value.charAt(0).toUpperCase())
+		this.setState({search: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1) })
 	}
 
-	handleActive(value, number) {
+	handleActive(value) {
 		this.setState({
 			searchBy: value,
-			selectedTab: number
 		});
 	}
 
 
 	render() {
-		const {inputValue, classActive, selectedTab} = this.state;
+		const {search, searchBy} = this.state;
 		const {onSearch} = this.props;
 		return (
 			<div className="search">
 				<div className="search__title">Find your Movie</div>
-				<input type="text" className="search__input" value={inputValue} onChange={this.handleInput} />
+				<input type="text" className="search__input" value={search} onChange={this.handleInput} />
 				<div className="search__bottom">
 					<div className="search__filter">
 						<span className="search__filterText">Search By:</span>
 						{ 
-							['title', 'director'].map((item, i) => 
-								<SearchFilterItem key={item} name={item} isActive={ i===selectedTab }  onActive={() => this.handleActive(item, i)} />
-							)
+							['title', 'genres'].map((item, i) => {
+								return <span key={item} 
+										className={`search__filterItem ${item===searchBy ? 'search__filterItem--active':''}`}
+										onClick={() => this.handleActive(item)}>
+									{item}
+								</span>
+							})
 						}
 					</div>
-					<button className="search__button" onClick={onSearch}>Search</button>
+					<button className="search__button" onClick={() => onSearch({search, searchBy})}>Search</button>
 				</div>
 			</div>
 		)
