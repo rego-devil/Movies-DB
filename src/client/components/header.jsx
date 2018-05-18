@@ -1,6 +1,5 @@
 import React from 'react';
 import {Search, FilmDetails} from './';
-import {Context} from './context';
 
 export class Header extends React.Component {
 
@@ -11,7 +10,9 @@ export class Header extends React.Component {
                 <div className="wrapper">
                     {
                         currentFilmDetails ? 
-                            <FilmDetails {...currentFilmDetails} onShowFilmDetails={onShowFilmDetails}   /> : <Search onSearch={onSearch} />
+                            <FilmDetails {...currentFilmDetails} onShowFilmDetails={onShowFilmDetails}   /> 
+                        :
+                            <Search onSearch={onSearch} />
                     }
                 </div>
             </div>

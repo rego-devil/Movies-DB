@@ -5,7 +5,8 @@ import {FilmList} from '../components';
 
 const mapStateToProps = (store) => {
     return {
-        filmList: store.filmState.films
+        filmList: store.filmState.films,
+        isFetching: store.filmState.isFetching
     }
 }
 
