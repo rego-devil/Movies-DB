@@ -1,5 +1,6 @@
 .filmItem {
   display: block;
+  position: relative;;
 
   &__img {
       display: block;
@@ -25,6 +26,19 @@
   }
 
   &__title {}
+
+  &__rating {
+    position: absolute;
+    background: #5dbb5d;
+    width: 30px;
+    height: 30px;
+    right: 5px;
+    top: 5px;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 5px;
+  }
 
 }
 
@@ -119,7 +133,7 @@
 	}
 }
 
-.filmInfo {
+.filmSort {
   padding: 20px 20px 0 20px;
   display: flex;
   justify-content: space-between;
@@ -129,15 +143,16 @@
   }
 
   &__sortBy {
-    > span {
+  }
+
+  &__item {
       display: inline-block;
       margin-left: 20px;
       cursor: pointer;
-    }
-  }
 
-  &__sortByActive {
-    color: red;
+      &--active {
+        color: red;
+      }
   }
 }
 

@@ -4,7 +4,8 @@ import {Search, FilmDetails} from './';
 export class Header extends React.Component {
 
     render() {
-        const {currentFilmDetails, onShowFilmDetails, onSearch} = this.props;
+        const {currentFilmDetails, onShowFilmDetails, onSearch, searchBy, onSearchBy} = this.props;
+        console.log(this.props);
         return (
             <div className="header">
                 <div className="wrapper">
@@ -12,7 +13,7 @@ export class Header extends React.Component {
                         currentFilmDetails ? 
                             <FilmDetails {...currentFilmDetails} onShowFilmDetails={onShowFilmDetails}   /> 
                         :
-                            <Search onSearch={onSearch} />
+                            <Search onSearch={onSearch} searchBy={searchBy} onSearchBy={onSearchBy} />
                     }
                 </div>
             </div>

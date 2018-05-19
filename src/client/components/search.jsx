@@ -6,35 +6,33 @@ export class Search extends React.Component {
 		super(props);
 
 		this.handleInput = this.handleInput.bind(this);
-		this.handleActive = this.handleActive.bind(this);
-		
 
 		this.state = {
 			search: '',
-			searchBy: 'title'
 		}
 		
 	}
 
 	handleInput(e) {
-		console.log(e.target.value.charAt(0).toUpperCase())
 		this.setState({search: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1) })
 	}
 
-	handleActive(value) {
-		this.setState({
-			searchBy: value,
-		});
+
+	handleKeyPress = (event) => {
+		const {search} = this.state;
+		const {onSearch, searchBy} = this.props;
+
+		event.key == 'Enter' ? onSearch({search, searchBy}) : ''
 	}
 
 
 	render() {
-		const {search, searchBy} = this.state;
-		const {onSearch} = this.props;
+		const {search} = this.state;
+		const {onSearch, onSearchBy, searchBy} = this.props;
 		return (
 			<div className="search">
 				<div className="search__title">Find your Movie</div>
-				<input type="text" className="search__input" value={search} onChange={this.handleInput} />
+				<input type="text" className="search__input" value={search} onChange={this.handleInput} onKeyPress={this.handleKeyPress} />
 				<div className="search__bottom">
 					<div className="search__filter">
 						<span className="search__filterText">Search By:</span>
@@ -42,7 +40,7 @@ export class Search extends React.Component {
 							['title', 'genres'].map((item, i) => {
 								return <span key={item} 
 										className={`search__filterItem ${item===searchBy ? 'search__filterItem--active':''}`}
-										onClick={() => this.handleActive(item)}>
+										onClick={() => onSearchBy(item)}>
 									{item}
 								</span>
 							})

@@ -4,13 +4,24 @@ export const startFetchFilms = () => ({
     type: 'START_FETCH_FILMS_REQUEST'
 })
 
-export const getFilms = (items) => ({
+export const getFilms = (data, count) => ({
     type: 'GET_FILMS_SUCCESS',
-    payload: items
+    payload: data,
+    count: count
 })
 
 export const showFilmDetails = (value) => ({
     type: 'SHOW_FILM_DETAILS',
+    payload: value
+})
+
+export const choiceSearchBy = (value) => ({
+    type: 'CHOICE_SEARCH_BY',
+    payload: value
+})
+
+export const sortByParameter = (value) => ({
+    type: 'SORT_FILMS',
     payload: value
 })
 
@@ -20,8 +31,7 @@ export const asyncGetFilms = (filterData = {}) => {
         dispatch(startFetchFilms());
         
         new Api(filterData).fetchJSON().then(films => {
-
-            dispatch(getFilms(films.data));
+            dispatch(getFilms(films.data, films.data.length));
 
         }).catch(error => {
             throw new Error(`ERROR!!! ${error}`);

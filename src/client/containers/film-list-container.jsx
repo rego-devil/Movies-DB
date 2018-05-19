@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import { showFilmDetails } from '../actions';
 import {FilmList} from '../components';
 
-const mapStateToProps = (store) => {
-    return {
-        filmList: store.filmState.films,
-        isFetching: store.filmState.isFetching
-    }
-}
+const mapStateToProps = (store) => (
+    {...store.filmState}
+)
 
 const mapDispatchToProps = (dispatch) => ({
     onShowFilmDetails: (value) => dispatch(showFilmDetails(value))

@@ -1,6 +1,6 @@
 export default class Api {
     constructor(query) {
-        this.query = Api.jsonToQueryString({...query, limit: 100});
+        this.query = Api.jsonToQueryString({...query, limit: 1000});
     }
 
     static host = 'http://react-cdp-api.herokuapp.com/movies/';

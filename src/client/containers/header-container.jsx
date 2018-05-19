@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { showFilmDetails, asyncGetFilms } from '../actions';
+import { showFilmDetails, choiceSearchBy, asyncGetFilms } from '../actions';
 import {Header} from '../components';
 
 const mapStateToProps = (store) => ({
-    currentFilmDetails: store.filmState.currentFilmDetails
+    ...store.filmState
 })
 
 const mapDispatchToProps = (dispatch) => ({
     onShowFilmDetails: (obj) => dispatch(showFilmDetails(obj)),
+    onSearchBy: (value) => dispatch(choiceSearchBy(value)),
     onSearch: (filterData) => dispatch(asyncGetFilms(filterData))
 })
 
