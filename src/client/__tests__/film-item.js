@@ -10,8 +10,8 @@ describe('film Item component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    test('click event', () => {
-        const wrapper = shallow(<FilmItem  />);
-        // wrapper.find('.filmItem').simulate('click');
-    });
+    // test('click event', () => {
+    //     const wrapper = shallow(<FilmItem  />);
+    //     // wrapper.find('.filmItem').simulate('click');
+    // });
 });

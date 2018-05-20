@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow, mount, render} from 'enzyme';
-import {Main} from '../components/main';
+import {Main} from '../pages/main';
 
 describe('Main  component', () => {
 

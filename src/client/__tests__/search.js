@@ -12,10 +12,10 @@ describe('Search component', () => {
     test('setState ', () => {
         const wrapper = shallow(<Search  />);
 
-        expect(wrapper.state('inputValue')).toEqual('');
+        expect(wrapper.state('search')).toEqual('');
         expect(wrapper.find('.search__input').prop('value')).toEqual('');
 
-        wrapper.setState({ inputValue: 'Some text in input' });
+        wrapper.setState({ search: 'Some text in input' });
 
         expect(wrapper.find('.search__input').prop('value')).toEqual('Some text in input');
         
@@ -27,6 +27,6 @@ describe('Search component', () => {
             target: { value: 'Input some text' }
         });
 
-        expect(wrapper.state('inputValue')).toBe('Input some text');
+        expect(wrapper.state('search')).toBe('Input some text');
     });
 });

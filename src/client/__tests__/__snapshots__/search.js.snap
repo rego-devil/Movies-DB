@@ -12,6 +12,7 @@ exports[`Search component renders without crashing 1`] = `
   <input
     className="search__input"
     onChange={[Function]}
+    onKeyPress={[Function]}
     type="text"
     value=""
   />
@@ -26,21 +27,24 @@ exports[`Search component renders without crashing 1`] = `
       >
         Search By:
       </span>
-      <SearchFilterItem
-        isActive={true}
+      <span
+        className="search__filterItem "
         key="title"
-        name="title"
-        onActive={[Function]}
-      />
-      <SearchFilterItem
-        isActive={false}
-        key="director"
-        name="director"
-        onActive={[Function]}
-      />
+        onClick={[Function]}
+      >
+        title
+      </span>
+      <span
+        className="search__filterItem "
+        key="genres"
+        onClick={[Function]}
+      >
+        genres
+      </span>
     </div>
     <button
       className="search__button"
+      onClick={[Function]}
     >
       Search
     </button>
