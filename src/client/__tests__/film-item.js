@@ -5,8 +5,17 @@ import {FilmItem} from '../components/film-item';
 
 describe('film Item component', () => {
 
+
+    const minProps = {
+        title: 'default',
+        genres,
+        release_date,
+        vote_average,
+        poster_path
+    }
+
     test('renders without crashing', () => {
-        const wrapper = shallow(<FilmItem />);
+        const wrapper = shallow(<FilmItem {...minProps} />);
         expect(wrapper).toMatchSnapshot();
     });
 

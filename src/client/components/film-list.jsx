@@ -2,7 +2,7 @@ import React from 'react';
 import {FilmItem} from './';
 import { Loading } from './loading';
 
-export const FilmList = ({films, onShowFilmDetails, onSelectFilm, isFetching}) => (
+export const FilmList = ({films, onShowFilmDetails, isFetching}) => (
 	<React.Fragment>
 		{isFetching ? <Loading /> : ''}
 		{

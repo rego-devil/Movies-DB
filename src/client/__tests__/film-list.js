@@ -4,6 +4,12 @@ import {FilmList} from '../components/film-list';
 
 describe('film List component', () => {
 
+    const minProps = {
+        films: [],
+        onShowFilmDetails: ()=>{},
+        isFetching: false
+    }
+
     // test('renders without crashing', () => {
     //     const wrapper = shallow(<FilmList searching={true}  />);
     //     expect(wrapper).toMatchSnapshot();

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main  component renders without crashing 1`] = `
+<React.Fragment>
+  <Connect(Header) />
+  <div
+    className="main"
+  >
+    <div
+      className="wrapper"
+    >
+      <Connect(FilmSort) />
+      <Connect(FilmList) />
+    </div>
+  </div>
+</React.Fragment>
+`;
