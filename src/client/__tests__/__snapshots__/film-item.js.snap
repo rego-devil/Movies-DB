@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`film Item component +++ Match snapshot 1`] = `
+<React.Fragment>
+  <div
+    className="filmItem__rating"
+  >
+    8
+  </div>
+  <img
+    className="filmItem__img"
+    src="ulrToImg"
+  />
+  <div
+    className="filmItem__description"
+  >
+    <div
+      className="filmItem__title"
+    >
+      default
+    </div>
+    <div
+      className="filmItem__releaseYear"
+    >
+      2018
+    </div>
+  </div>
+  <div
+    className="filmItem__genre"
+  />
+</React.Fragment>
+`;

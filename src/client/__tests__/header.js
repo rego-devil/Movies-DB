@@ -1,28 +1,37 @@
 import React from 'react';
 import {shallow, mount, render} from 'enzyme';
 import {Header} from '../components/header';
-import { wrap } from 'module';
 
 describe('Header  component', () => {
+    let renderedComponent;
 
     const minProps = {
         showFilmDetails: true,
         onShowFilmDetails: () => {} 
     }
 
+    beforeEach(()=>{
+        renderedComponent = shallow(<Header {...minProps} />)
+    });
+
+    test('+++Match snapshot', () => {
+        expect(renderedComponent).toMatchSnapshot();
+    });
+
     test('renders without crashing', () => {
-        const wrapper = shallow(<Header  />);
-        expect(wrapper).toMatchSnapshot();
+        expect(renderedComponent.length).toEqual(1);
     });
 
-    test('should render button "Back to searh"  ', () => {
-        const wrapper = mount(<Header showFilmDetails={true} /> );
-        expect(wrapper.find('.header__backToSearch').exists()).toEqual(true);
-    });
+    test('render with various props"  ', () => {
+        
+        let renderedComponent = shallow(<Header currentFilmDetails={null} />);
+        expect(renderedComponent.find('Search').length).toBe(1);
 
-    test('click button "Back to searh"  ', () => {
-        const wrapper = mount(<Header {...minProps} /> );
-        wrapper.find('.header__backToSearch').simulate('click');
+
+        renderedComponent = shallow(<Header currentFilmDetails={{}} />);
+        expect(renderedComponent.find('FilmDetails').length).toBe(1);
+
+        console.log(renderedComponent.debug());
     });
 
 });

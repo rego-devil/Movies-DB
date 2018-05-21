@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`film List component renders without crashing 1`] = `
+<React.Fragment>
+  <ul
+    className="filmList"
+  >
+    <li
+      className="filmItem"
+      key="1"
+      onClick={[Function]}
+    >
+      <FilmItem
+        id={1}
+        release_date="2018"
+        title="default"
+      />
+    </li>
+  </ul>
+</React.Fragment>
+`;

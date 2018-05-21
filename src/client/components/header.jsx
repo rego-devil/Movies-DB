@@ -1,23 +1,26 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import {Search, FilmDetails} from './';
 
-export class Header extends React.Component {
 
-    render() {
-        const {currentFilmDetails, onShowFilmDetails, onSearch, searchBy, onSearchBy} = this.props;
-        console.log(this.props);
-        return (
-            <div className="header">
-                <div className="wrapper">
-                    {
-                        currentFilmDetails ? 
-                            <FilmDetails {...currentFilmDetails} onShowFilmDetails={onShowFilmDetails}   /> 
-                        :
-                            <Search onSearch={onSearch} searchBy={searchBy} onSearchBy={onSearchBy} />
-                    }
-                </div>
-            </div>
-        )
-    }
-    
+export const Header = ({currentFilmDetails, onShowFilmDetails, onSearch, searchBy, onSearchBy}) => (
+
+    <div className="header">
+        <div className="wrapper">
+            {
+                currentFilmDetails ? 
+                    <FilmDetails {...currentFilmDetails} onShowFilmDetails={onShowFilmDetails} /> 
+                :
+                    <Search onSearch={onSearch} searchBy={searchBy} onSearchBy={onSearchBy} />
+            }
+        </div>
+    </div>
+)
+
+Header.propTypes = {
+	currentFilmDetails: propTypes.object,
+	onShowFilmDetails: propTypes.func,
+	onSearch: propTypes.func,
+    searchBy: propTypes.func,
+    onSearchBy: propTypes.func,
 }
