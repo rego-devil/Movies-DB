@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`film Item component +++ Match snapshot 1`] = `
+<div
+  className="filmDetails"
+>
+  <img
+    className="filmDetails__img"
+    src="ulrToImg"
+  />
+  <div
+    className="filmDetails__overview"
+  >
+    <div
+      className="filmDetails__top"
+    >
+      <div
+        className="filmDetails__title"
+      >
+        default
+      </div>
+      <div
+        className="filmDetails__rating"
+      >
+        8
+      </div>
+      <button
+        className="filmDetails__backToSearch"
+        onClick={[Function]}
+      >
+        Back to search
+      </button>
+    </div>
+    <div
+      className="filmDetails__middle"
+    >
+      <div
+        className="filmDetails__date"
+      >
+        1939
+      </div>
+      <div
+        className="filmDetails__duration"
+      />
+    </div>
+    <div
+      className="filmDetails__description"
+    />
+    <div
+      className="filmDetails__genres"
+    />
+  </div>
+</div>
+`;
