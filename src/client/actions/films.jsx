@@ -30,7 +30,7 @@ export const asyncGetFilms = (filterData = {}) => {
         
         dispatch(startFetchFilms());
         
-        new Api(filterData).fetchJSON().then(films => {
+        return new Api(filterData).fetchJSON().then(films => {
             dispatch(getFilms(films.data, films.data.length));
 
         }).catch(error => {

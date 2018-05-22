@@ -1,3 +1,5 @@
+import "isomorphic-fetch";
+
 export default class Api {
     constructor(query) {
         this.query = Api.jsonToQueryString({...query, limit: 1000});
