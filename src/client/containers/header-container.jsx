@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { showFilmDetails, choiceSearchBy, asyncGetFilms } from '../actions';
 import {Header} from '../components';
 
-const mapStateToProps = (store) => ({
-    ...store.filmState
-})
+const mapStateToProps = (store) => {
+    return store.filmState
+}
 
 const mapDispatchToProps = (dispatch) => ({
     onShowFilmDetails: (obj) => dispatch(showFilmDetails(obj)),

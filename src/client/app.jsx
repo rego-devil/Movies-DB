@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import {ErrorBoundary} from './error-boundary';
 import { Main} from './pages';
 import { startFetchFilms, getFilms } from './actions';
-import { filmReducer, statusReducer } from './reducers';
+import { filmReducer } from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import style from './styles/index.scss';
@@ -15,7 +15,6 @@ import style from './styles/index.scss';
 
 const reducers = combineReducers({
   filmState: filmReducer,
-  // statusState: statusReducer,
 });
 
 const store = createStore(

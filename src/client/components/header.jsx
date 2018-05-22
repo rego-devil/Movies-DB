@@ -4,7 +4,6 @@ import {Search, FilmDetails} from './';
 
 
 export const Header = ({currentFilmDetails, onShowFilmDetails, onSearch, searchBy, onSearchBy}) => (
-
     <div className="header">
         <div className="wrapper">
             {
@@ -21,6 +20,6 @@ Header.propTypes = {
 	currentFilmDetails: propTypes.object,
 	onShowFilmDetails: propTypes.func,
 	onSearch: propTypes.func,
-    searchBy: propTypes.func,
+    searchBy: propTypes.string,
     onSearchBy: propTypes.func,
 }
