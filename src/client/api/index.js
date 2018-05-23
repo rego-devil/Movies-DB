@@ -14,6 +14,8 @@ export default class Api {
 
     fetchJSON() {
         const url = Api.host + this.query;
-        return fetch(url).then(response => response.json());
+        return fetch(url).then(response => {
+            return response.json()
+        });
     }
 }

@@ -10,6 +10,11 @@ export const getFilms = (data, count) => ({
     count: count
 })
 
+export const failedFilms = (error) => ({
+    type: 'GET_FILMS_FAILED',
+    error: error,
+})
+
 export const showFilmDetails = (value) => ({
     type: 'SHOW_FILM_DETAILS',
     payload: value
@@ -34,7 +39,7 @@ export const asyncGetFilms = (filterData = {}) => {
             dispatch(getFilms(films.data, films.data.length));
 
         }).catch(error => {
-            throw new Error(`ERROR!!! ${error}`);
+            dispatch(failedFilms(error.message));
         });
 
     }

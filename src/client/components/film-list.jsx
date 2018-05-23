@@ -2,7 +2,7 @@ import React from 'react';
 import {FilmItem} from './';
 import { Loading } from './loading';
 
-export const FilmList = ({films, onShowFilmDetails, isFetching}) => (
+export const FilmList = ({films, onShowFilmDetails, isFetching, error}) => (
 	<React.Fragment>
 		{isFetching ? <Loading /> : ''}
 		{
@@ -18,7 +18,10 @@ export const FilmList = ({films, onShowFilmDetails, isFetching}) => (
 			</ul>
 			
 		) : (
-			<div className="noFilms">No films found</div>
+			<React.Fragment>
+				<div className="error">{error}</div>
+				<div className="noFilms">No films found</div>
+			</React.Fragment>
 		)}
 	</React.Fragment>
 )

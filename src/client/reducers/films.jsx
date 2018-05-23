@@ -5,7 +5,8 @@ const initialState = {
     searchBy: 'title',
     sortBy: 'release_date',
     sortOrder: 'desc',
-    count: 0
+    count: 0,
+    error: '',
 }
 
 export const filmReducer = (state = initialState, action) => {
@@ -13,6 +14,8 @@ export const filmReducer = (state = initialState, action) => {
     switch(action.type) {
         case 'START_FETCH_FILMS_REQUEST':
             return {...state, isFetching: true }
+        case 'GET_FILMS_FAILED':
+            return {...state, isFetching: false, error: action.error }
         case 'GET_FILMS_SUCCESS' :
             return {...state, isFetching: false, films: action.payload, count: action.count }
         case 'SHOW_FILM_DETAILS':
