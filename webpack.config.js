@@ -92,7 +92,11 @@ module.exports = {
   devServer: {
     // hot: true,
     port: 9000,
-    // inline: true,
+    inline: true,
+    contentBase: './',
+    historyApiFallback: {
+      index: 'index.html'
+    }
     // publicPath: "/",
     // contentBase: "./public",
   }

@@ -4,14 +4,13 @@ import { createStore, combineReducers, applyMiddleware  } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import {ErrorBoundary} from './error-boundary';
-import { Main} from './pages';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {Main, Inner} from './pages';
 import { startFetchFilms, getFilms } from './actions';
 import { filmReducer } from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import style from './styles/index.scss';
-// import {Context} from './components/context';
-
 
 const reducers = combineReducers({
   filmState: filmReducer,
@@ -22,24 +21,26 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-class App extends React.Component {
-  constructor() {
-    super();
-
-  }
-
-  render() {
-    return (
-        <ErrorBoundary>
-          <Main />
-        </ErrorBoundary>
-    )
-  }
-}
+export const App = (props) => (
+  <ErrorBoundary>
+    {props.children} 
+    <ul>
+      <li><a href="/">Main</a></li>
+      <li><a href="/inner">Inner</a></li>
+    </ul>   
+  </ErrorBoundary>
+)
 
 ReactDOM.render(
   <Provider store={store}>
-      <App />
+    <Router>
+        <App>
+          <Route path="/" component={Main} />
+          <Route path="/inner" component={Inner} />
+        </App>
+    </Router>
   </Provider>,
   document.getElementById('app')
 );
+
+

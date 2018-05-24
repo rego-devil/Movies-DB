@@ -5,11 +5,12 @@ export const Main = (props) => {
 //   {throw  new Error('I crashed!')}
   return (
     <React.Fragment>
-        <HeaderContainer />
+        {/* <HeaderContainer /> */}
         <div className="main">
             <div className="wrapper">
-                <FilmSortContainer />
-                <FilmListContainer />
+                wwerewr
+                {/* <FilmSortContainer /> */}
+                {/* <FilmListContainer /> */}
             </div>
         </div>
     </React.Fragment>
