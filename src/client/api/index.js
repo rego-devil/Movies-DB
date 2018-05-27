@@ -2,7 +2,12 @@ import "isomorphic-fetch";
 
 export default class Api {
     constructor(query) {
-        this.query = Api.jsonToQueryString({...query, limit: 1000});
+        if(typeof query === 'string') {
+            this.query = query;
+        } else {
+            this.query = Api.jsonToQueryString({...query, limit: 100});
+        }
+        
     }
 
     static host = 'http://react-cdp-api.herokuapp.com/movies/';

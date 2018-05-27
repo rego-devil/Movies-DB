@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { choiceSearchBy, asyncGetFilms } from '../actions';
-import {Header} from '../components';
+import {Search} from '../components';
 
 const mapStateToProps = (store) => {
     return store.filmState
@@ -12,4 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
     onSearch: (filterData) => dispatch(asyncGetFilms(filterData))
 })
 
-export const HeaderContainer =  connect(mapStateToProps, mapDispatchToProps)(Header);
+export const SearchContainer =  connect(mapStateToProps, mapDispatchToProps)(Search);

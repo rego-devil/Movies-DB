@@ -1,2 +1,3 @@
-export {Main} from './main';
-export {Inner} from './inner';
+export {MainPage} from './main';
+export {FilmPage} from './film';
+export {NotFound} from './not-found';

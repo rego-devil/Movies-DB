@@ -4,11 +4,11 @@ import { createStore, combineReducers, applyMiddleware  } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import {ErrorBoundary} from './error-boundary';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {Main, Inner} from './pages';
-import { startFetchFilms, getFilms } from './actions';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import {MainPage, FilmPage, NotFound} from './pages';
 import { filmReducer } from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import {} from './containers';
 
 import style from './styles/index.scss';
 
@@ -23,11 +23,7 @@ const store = createStore(
 
 export const App = (props) => (
   <ErrorBoundary>
-    {props.children} 
-    <ul>
-      <li><a href="/">Main</a></li>
-      <li><a href="/inner">Inner</a></li>
-    </ul>   
+    {props.children}
   </ErrorBoundary>
 )
 
@@ -35,8 +31,12 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
         <App>
-          <Route path="/" component={Main} />
-          <Route path="/inner" component={Inner} />
+          <Switch>
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/film/:id" component={FilmPage} />
+            <Route path="*" component={NotFound} />
+            {/* <Redirect exact from="/film/:tab" to="/film" /> */}
+          </Switch>
         </App>
     </Router>
   </Provider>,
