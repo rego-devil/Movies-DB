@@ -33,6 +33,8 @@ ReactDOM.render(
         <App>
           <Switch>
             <Route exact path="/" component={MainPage} />
+            <Route exact path="/search" component={MainPage} />
+            <Route exact path="/search/:query" component={MainPage} />
             <Route exact path="/film/:id" component={FilmPage} />
             <Route path="*" component={NotFound} />
             {/* <Redirect exact from="/film/:tab" to="/film" /> */}

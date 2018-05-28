@@ -15,8 +15,8 @@ export const failedFilms = (error) => ({
     error: error,
 })
 
-export const showFilmDetails = (value) => ({
-    type: 'SHOW_FILM_DETAILS',
+export const currentFilm = (value) => ({
+    type: 'CURRENT_FILM_DETAILS',
     payload: value
 })
 
@@ -37,10 +37,9 @@ export const asyncGetFilms = (filterData = {}) => {
         
         return new Api(filterData).fetchJSON().then(films => {
             if(films.total || films.total == 0)
-                dispatch(getFilms(films.data, films.total));
+                dispatch(getFilms(films.data, films.data.length));
             else {
-                dispatch(getFilms([films], 1));
-                dispatch(showFilmDetails(films));
+                dispatch(currentFilm(films));                
             }
 
         }).catch(error => {

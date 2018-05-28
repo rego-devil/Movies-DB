@@ -8,7 +8,7 @@ export class FilmDetails extends React.Component {
   }
 
   render() {
-    const {title, vote_average, release_date, runtime, genres, overview, poster_path, onShowFilmDetails} = this.props;
+    const {title, vote_average, release_date, runtime, genres, overview, poster_path, onEmptyCurrentFilm } = this.props;
     return (
       
       <div className="filmDetails">
@@ -18,8 +18,7 @@ export class FilmDetails extends React.Component {
             <div className="filmDetails__title">{title}</div>
             <div className="filmDetails__rating">{vote_average}</div>
             <button className="filmDetails__backToSearch">
-              {/* onClick={() => onShowFilmDetails(null)} */}
-              <Link to="/" >Back to search</Link>
+              <Link to="/"  onClick={() => onEmptyCurrentFilm(null)} >Back to search</Link>
             </button>
           </div>
           <div className="filmDetails__middle">

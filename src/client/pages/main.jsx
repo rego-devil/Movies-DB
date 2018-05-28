@@ -7,7 +7,7 @@ export const MainPage = (props) => {
     <React.Fragment>
         <div className="header">
             <div className="wrapper">
-                <SearchContainer />
+                <SearchContainer {...props} />
             </div>
         </div>
         <div className="main">

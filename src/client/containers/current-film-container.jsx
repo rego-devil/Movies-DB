@@ -5,14 +5,14 @@ import {FilmDetails} from '../components';
 
 const mapStateToProps = (store, ownProps) => {
     return {
-        ...ownProps.match.params,
-        ...store.filmState.currentFilmDetails
+        ...store.filmState.currentFilmDetails,
+        ...ownProps.match.params
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // onShowFilmDetails: (obj) => dispatch(showFilmDetails(obj)),
+        onEmptyCurrentFilm: (obj) => dispatch(currentFilm(obj)),
         getFilm: (id) => dispatch(asyncGetFilms(id))
     }
 }

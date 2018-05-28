@@ -1,5 +1,6 @@
 import React from 'react';
 import {Context} from './context';
+import { Link } from 'react-router-dom';
 
 export class Search extends React.Component {
 	constructor(props) {
@@ -11,6 +12,14 @@ export class Search extends React.Component {
 			search: '',
 		}
 		
+	}
+
+	componentWillMount() {
+		const params = new URLSearchParams(this.props.location.search);
+		if(params.get('search') && params.get('searchBy')) {
+			
+			this.props.onSearch({search: params.get('search'), searchBy: params.get('searchBy')})	
+		}
 	}
 
 	handleInput(e) {
@@ -46,7 +55,10 @@ export class Search extends React.Component {
 							})
 						}
 					</div>
-					<button className="search__button" onClick={() => onSearch({search, searchBy})}>Search</button>
+
+					<Link to={`/search?search=${search}&searchBy=${searchBy}`}>
+						<button className="search__button" onClick={() => onSearch({search, searchBy})}>Search</button>
+					</Link>
 				</div>
 			</div>
 		)
