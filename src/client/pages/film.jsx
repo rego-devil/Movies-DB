@@ -1,19 +1,19 @@
 import React from 'react';
-import { FilmListContainer, SearchContainer, FilmSortContainer } from '../containers';
+import { FilmListContainer, CurrentFilmContainer, FilmSortContainer } from '../containers';
 
-export const MainPage = (props) => {
+export const FilmPage = (props) => {
 //   {throw  new Error('I crashed!')}
   return (
     <React.Fragment>
         <div className="header">
             <div className="wrapper">
-                <SearchContainer {...props} />
+                <CurrentFilmContainer {...props} />
             </div>
         </div>
         <div className="main">
             <div className="wrapper">  
-                <FilmSortContainer />
-                <FilmListContainer />
+                {/* <FilmSortContainer />
+                <FilmListContainer /> */}
             </div>
         </div>
     </React.Fragment>

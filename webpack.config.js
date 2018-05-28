@@ -19,7 +19,8 @@ module.exports = {
 
   output: {
     filename: "[name].bundle.js",
-    path: BUILD_DIR
+    path: BUILD_DIR,
+    publicPath: '/',
   },
 
   module: {
@@ -92,8 +93,10 @@ module.exports = {
   devServer: {
     // hot: true,
     port: 9000,
-    // inline: true,
-    // publicPath: "/",
+    inline: true,
+    contentBase: './',
+    historyApiFallback: true,
+    publicPath: "/",
     // contentBase: "./public",
   }
 }

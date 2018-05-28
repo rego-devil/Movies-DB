@@ -1,22 +1,25 @@
 import React from 'react';
 import {FilmItem} from './';
 import { Loading } from './loading';
+import { Link } from 'react-router-dom';
 
-export const FilmList = ({films, onShowFilmDetails, isFetching, error}) => (
+export const FilmList = ({films, isFetching, error}) => (
 	<React.Fragment>
-		{isFetching ? <Loading /> : ''}
 		{
-			films.length > 0 ? (
+			isFetching ? <Loading /> : ''
+		}
+		{
+			films.length ? (
 			<ul className="filmList">
 				{
 					films.map((item) => 
-						<li key={item.id} className="filmItem" onClick={() =>  onShowFilmDetails(item) }>
-							<FilmItem {...item} />
+						<li key={item.id} className="filmItem">
+							<Link to={`/film/${item.id}`} ><FilmItem {...item} /></Link>
+							{/* onClick={() =>  onShowFilmDetails(item) } */}
 						</li>
 					)
 				}
 			</ul>
-			
 		) : (
 			<React.Fragment>
 				<div className="error">{error}</div>

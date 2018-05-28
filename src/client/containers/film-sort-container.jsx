@@ -4,7 +4,7 @@ import { sortByParameter } from '../actions';
 import {FilmSort} from '../components';
 
 const mapStateToProps = (store) => {
-    return {...store.filmState}
+    return store.filmState
 }
 
 const mapDispatchToProps = (dispatch) => ({

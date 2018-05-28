@@ -8,7 +8,7 @@ const mapStateToProps = (store) => (
 )
 
 const mapDispatchToProps = (dispatch) => ({
-    onShowFilmDetails: (value) => dispatch(showFilmDetails(value))
+    // onShowFilmDetails: (value) => dispatch(showFilmDetails(value))
 })
 
 export const FilmListContainer =  connect(mapStateToProps, mapDispatchToProps)(FilmList);

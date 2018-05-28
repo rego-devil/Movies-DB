@@ -48,9 +48,14 @@
   padding: 0 0 0 0;
 
   .filmItem {
-      flex: 0 0 200px;
       margin: 20px 20px;
-      cursor: pointer;
+      display: block;
+      flex: 0 0 200px;
+
+      > a {
+        text-decoration: none;
+        color: #000;
+      }
   }
 }
 
@@ -163,4 +168,17 @@
    justify-content: center;
    font-size: 2rem;
    color: gray;
+}
+
+.error {
+  color: red;
+}
+
+.noFound {
+  display: flex;   
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: gray;
 }
