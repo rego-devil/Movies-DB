@@ -1,25 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers, applyMiddleware  } from 'redux';
-import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import {ErrorBoundary} from './error-boundary';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import {MainPage, FilmPage, NotFound} from './pages';
-import { filmReducer } from './reducers';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import {} from './containers';
-
+import store from './store/configure-store';
 import style from './styles/index.scss';
 
-const reducers = combineReducers({
-  filmState: filmReducer,
-});
 
-const store = createStore(
-  reducers,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+
 
 export const App = (props) => (
   <ErrorBoundary>
@@ -27,7 +16,7 @@ export const App = (props) => (
   </ErrorBoundary>
 )
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <Provider store={store}>
     <Router>
         <App>

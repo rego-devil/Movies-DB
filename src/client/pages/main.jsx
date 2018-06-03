@@ -3,6 +3,7 @@ import { FilmListContainer, SearchContainer, FilmSortContainer } from '../contai
 
 export const MainPage = (props) => {
 //   {throw  new Error('I crashed!')}
+    
   return (
     <React.Fragment>
         <div className="header">

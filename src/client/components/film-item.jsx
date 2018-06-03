@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import defaultThumb from '../images/default_thumb.png';
+// import defaultThumb from '../images/default_thumb.png';
 
 
 export const FilmItem = ({title, genres, release_date, vote_average, poster_path}) => {

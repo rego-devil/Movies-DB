@@ -5,7 +5,7 @@ import {Search} from '../components';
 
 const mapStateToProps = (store, ownProps) => {
     return {
-        ...ownProps.match.params,
+        ...ownProps,
         ...store.filmState
     }
 }

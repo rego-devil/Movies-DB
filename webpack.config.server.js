@@ -1,26 +1,18 @@
 const path = require("path");
 const webpack = require("webpack");
 
-const APP_DIR = path.resolve(__dirname, "src");
-const BUILD_DIR = path.resolve(__dirname, "public");
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
-  devtool: 'source-map',
   mode: process.env.NODE_ENV === "development" ? "development" : "production",
 
-  entry: {
-    javascript: './client/app'
-  },
+  entry: './server/server-renderer.js',
 
   output: {
-    filename: "[name].bundle.js",
-    path: BUILD_DIR,
-    publicPath: '/',
+    filename: 'js/server-renderer.js',
   },
 
   module: {
@@ -42,17 +34,6 @@ module.exports = {
           // 'postcss-loader',
           'sass-loader',
         ]
-        // use: ExtractTextPlugin.extract({
-        //   use: [
-        //     { 
-        //       loader: "css-loader" // translates CSS into CommonJS
-        //     }, 
-        //     { 
-        //       loader: "sass-loader", // compiles SCCC to CSS
-        //     }  
-        //   ],
-        //   fallback: "style-loader"   // creates style nodes from JS strings
-        // })
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
@@ -79,24 +60,8 @@ module.exports = {
       template: "./client/index.html"
       // inject: false
     }),
-    // new ExtractTextPlugin({
-    //   filename: "style.css",
-    //   disable: process.env.NODE_ENV === "development"
-    // }),
     new MiniCssExtractPlugin({
       filename: "style.css"
-    }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    })
   ],
-
-  devServer: {
-    // hot: true,
-    port: 9000,
-    inline: true,
-    contentBase: './',
-    historyApiFallback: true,
-    publicPath: "/",
-    // contentBase: "./public",
-  }
 }

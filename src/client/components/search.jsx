@@ -14,12 +14,15 @@ export class Search extends React.Component {
 		
 	}
 
-	componentWillMount() {
-		const params = new URLSearchParams(this.props.location.search);
-		if(params.get('search') && params.get('searchBy')) {
-			
-			this.props.onSearch({search: params.get('search'), searchBy: params.get('searchBy')})	
+	componentWillMount() {		
+		if(this.props.location && this.props.location.search) {
+			const params = new URLSearchParams(this.props.location.search);
+
+			if(params.get('search') && params.get('searchBy')) {
+				this.props.onSearch({search: params.get('search'), searchBy: params.get('searchBy')})	
+			}
 		}
+		
 	}
 
 	handleInput(e) {
