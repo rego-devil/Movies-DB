@@ -1,21 +1,24 @@
 const path = require("path");
 const webpack = require("webpack");
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
+  target: 'node',
   mode: process.env.NODE_ENV === "development" ? "development" : "production",
+
+  externals: [nodeExternals()],
 
   entry: './server/server-renderer.js',
 
   output: {
-    filename: 'js/server-renderer.js',
+    path: path.join(__dirname, 'src/server'),
+    filename: 'server.bundle.js',
+    libraryTarget: 'commonjs2',
   },
 
   module: {
+
     rules: [
       {
         test: /\.jsx?$/,
@@ -24,44 +27,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader']
+        loader: 'ignore-loader',
       },
       {
         test: /\.scss?$/,
-        use: [
-          process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {loader: 'css-loader', options: { minimize: true }},
-          // 'postcss-loader',
-          'sass-loader',
-        ]
+        loader: 'ignore-loader',
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: 'img/',
-              name: '[name].[ext]'
-            }  
-          }
-        ]
+        loader: 'ignore-loader',
       }
     ]
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', 'scss'],
+    extensions: ['.js', '.jsx'],
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Movies-DB",
-      template: "./client/index.html"
-      // inject: false
-    }),
-    new MiniCssExtractPlugin({
-      filename: "style.css"
-    })
-  ],
+  plugins: [],
 }

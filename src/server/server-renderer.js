@@ -36,28 +36,29 @@ const renderHTML = (html, preloadedState) => {
 }
 
 
-export const serverRenderer = () => {
-    return (req, res) => {
+const serverRenderer = (req, res) => {
+  
+    const context = {};
 
-      const context = {};
+    const app = (
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={context}>
+          <MainPage />
+        </StaticRouter>
+      </Provider>
+    );
 
-      const app = (
-        <Provider store={store}>
-          <StaticRouter location={req.url} context={context}>
-            <MainPage />
-          </StaticRouter>
-        </Provider>
-      );
+    const htmlString = renderToString(app);
 
-      const htmlString = renderToString(app);
-
-      if (context.url) {
-        // Somewhere a `<Redirect>` was rendered
-        return res.redirect(context.url);
-      }
-
-      const preloadedState = store.getState();
-
-      res.send(renderHTML(htmlString, preloadedState));
+    if (context.url) {
+      // Somewhere a `<Redirect>` was rendered
+      return res.redirect(context.url);
     }
+
+    const preloadedState = store.getState();
+
+    res.send(renderHTML(htmlString, preloadedState));
+    
 }
+
+export default serverRenderer;

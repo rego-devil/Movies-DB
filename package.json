@@ -32,6 +32,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
+    "ignore-loader": "^0.1.2",
     "jest": "^22.4.3",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
@@ -43,15 +44,18 @@
     "style-loader": "^0.21.0",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.14",
-    "webpack-dev-server": "^3.1.3"
+    "webpack-dev-server": "^3.1.3",
+    "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "server": "nodemon src/server/server.js --exec babel-node",
+    "server": "nodemon view/server/server.js --exec node",
+    "node": "webpack --config=webpack.config.server.js && babel-node src/server/server.js",
     "start": "set NODE_ENV=development&&webpack-dev-server",
     "build": "set NODE_ENV=production&&webpack",
     "test": "jest --config jest.config.json",
     "test:watch": "jest --config jest.config.json --watch",
-    "test:coverage": "jest --config jest.config.json --coverage"
+    "test:coverage": "jest --config jest.config.json --coverage",
+    "babel": "babel src -d views"
   },
   "repository": {
     "type": "git",
