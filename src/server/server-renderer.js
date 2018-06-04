@@ -1,15 +1,9 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { MainPage } from '../client/pages/';
 import { Provider } from 'react-redux';
-import store from '../client/store/configure-store';
+import configureStore from '../client/store/configure-store';
 import { StaticRouter } from 'react-router-dom';
-
-const SimpleComponent = () => (
-  <div>
-    <span>Ура</span>
-  </div>
-)
+import Routing from '../client/components/routing';
 
 const renderHTML = (html, preloadedState) => {
   return `
@@ -20,7 +14,7 @@ const renderHTML = (html, preloadedState) => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta charset="UTF-8">
       <title></title>
-      <link rel="stylesheet" href="/styles.css">
+      <link rel="stylesheet" href="/style.css">
     </head>
     <body>
       <div id="app">${html}</div>
@@ -38,12 +32,13 @@ const renderHTML = (html, preloadedState) => {
 
 const serverRenderer = (req, res) => {
   
+    const store = configureStore();
     const context = {};
 
     const app = (
       <Provider store={store}>
         <StaticRouter location={req.url} context={context}>
-          <MainPage />
+          <Routing />
         </StaticRouter>
       </Provider>
     );
@@ -56,9 +51,10 @@ const serverRenderer = (req, res) => {
     }
 
     const preloadedState = store.getState();
+    console.log(preloadedState);
 
     res.send(renderHTML(htmlString, preloadedState));
     
 }
 
-export default serverRenderer;
+module.exports = serverRenderer;

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export class FilmDetails extends React.Component {
 
   componentWillMount() {
+    console.log(this.props)
     this.props.getFilm(this.props.id);
   }
 

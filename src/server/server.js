@@ -1,7 +1,5 @@
-const  express = require('express');
-// const  serverRenderer = require('./server.bundle');
-import serverRenderer from './server.bundle';
-
+const express = require('express');
+const serverRenderer = require('../../public/server.bundle');
 
 const app = express();
 

@@ -48,10 +48,12 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "server": "nodemon view/server/server.js --exec node",
-    "node": "webpack --config=webpack.config.server.js && babel-node src/server/server.js",
+    "nodemon": "nodemon src/server/server.js --exec node",
+    "build": "npm run server-prod && npm run client-prod && node src/server/server.js",
+    "server-prod": "webpack --config=webpack.config.server.js",
+    "server-dev": "webpack --config=webpack.config.server.js --watch",
     "start": "set NODE_ENV=development&&webpack-dev-server",
-    "build": "set NODE_ENV=production&&webpack",
+    "client-prod": "set NODE_ENV=production&&webpack",
     "test": "jest --config jest.config.json",
     "test:watch": "jest --config jest.config.json --watch",
     "test:coverage": "jest --config jest.config.json --coverage",

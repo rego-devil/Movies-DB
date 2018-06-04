@@ -74,11 +74,14 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({
-      title: "Movies-DB",
-      template: "./client/index.html"
-      // inject: false
-    }),
+    process.env.NODE_ENV === 'development' ? (
+      new HtmlWebpackPlugin({
+        title: "Movies-DB",
+        template: "./client/index.html"
+        // inject: false
+      })
+    ) : ''
+    ,
     // new ExtractTextPlugin({
     //   filename: "style.css",
     //   disable: process.env.NODE_ENV === "development"

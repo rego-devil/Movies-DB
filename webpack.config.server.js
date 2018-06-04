@@ -12,7 +12,7 @@ module.exports = {
   entry: './server/server-renderer.js',
 
   output: {
-    path: path.join(__dirname, 'src/server'),
+    path:  path.resolve(__dirname, "public"),
     filename: 'server.bundle.js',
     libraryTarget: 'commonjs2',
   },
@@ -31,7 +31,9 @@ module.exports = {
       },
       {
         test: /\.scss?$/,
-        loader: 'ignore-loader',
+        use: [
+         'css-loader/locals'
+        ]
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
