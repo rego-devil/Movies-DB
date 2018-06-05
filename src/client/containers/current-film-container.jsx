@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { showFilmDetails, asyncGetFilms } from '../actions';
+import { showFilmDetails, asyncGetFilms, currentFilm } from '../actions';
 import {FilmDetails} from '../components';
 
 const mapStateToProps = (store, ownProps) => {

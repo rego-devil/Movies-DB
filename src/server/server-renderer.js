@@ -51,7 +51,6 @@ const serverRenderer = (req, res) => {
     }
 
     const preloadedState = store.getState();
-    console.log(preloadedState);
 
     res.send(renderHTML(htmlString, preloadedState));
     

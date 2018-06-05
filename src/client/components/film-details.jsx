@@ -24,8 +24,8 @@ export class FilmDetails extends React.Component {
               <div className="filmDetails__top">
                 <div className="filmDetails__title">{title}</div>
                 <div className="filmDetails__rating">{vote_average}</div>
-                <button className="filmDetails__backToSearch">
-                  <Link to="/"  onClick={() => onEmptyCurrentFilm(null)} >Back to search</Link>
+                <button className="filmDetails__backToSearch" onClick={() => onEmptyCurrentFilm(null)}>
+                  <Link to="/">Back to search</Link>
                 </button>
               </div>
               <div className="filmDetails__middle">

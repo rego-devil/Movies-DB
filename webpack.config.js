@@ -83,13 +83,14 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
+     
+    process.env.NODE_ENV === "development" && new HtmlWebpackPlugin({
       title: "Movies-DB",
       template: "./client/index.html",
       // inject: false
     }) 
 
-  ],
+  ].filter(Boolean),
 
   devServer: {
     // hot: true,
