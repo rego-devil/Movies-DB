@@ -39,10 +39,7 @@ export const asyncGetFilms = (filterData = {}) => {
             if(films.total || films.total == 0)
                 dispatch(getFilms(films.data, films.data.length));
             else {
-                window.setTimeout( 
-                    () => dispatch(currentFilm(films)), 
-                    3000
-                )
+               dispatch(currentFilm(films))
             }
 
         }).catch(error => {

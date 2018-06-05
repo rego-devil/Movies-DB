@@ -74,14 +74,6 @@ module.exports = {
   },
 
   plugins: [
-    process.env.NODE_ENV === 'development' ? (
-      new HtmlWebpackPlugin({
-        title: "Movies-DB",
-        template: "./client/index.html"
-        // inject: false
-      })
-    ) : ''
-    ,
     // new ExtractTextPlugin({
     //   filename: "style.css",
     //   disable: process.env.NODE_ENV === "development"
@@ -90,7 +82,13 @@ module.exports = {
       filename: "style.css"
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Movies-DB",
+      template: "./client/index.html",
+      // inject: false
+    }) 
+
   ],
 
   devServer: {
