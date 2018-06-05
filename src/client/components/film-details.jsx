@@ -4,8 +4,15 @@ import { Loading } from './loading';
 
 export class FilmDetails extends React.Component {
 
+  static async getInitialProps({ req }) {
+    const res = await fetch('https://api.github.com/repos/zeit/next.js')
+    const json = await res.json()
+    console.log('----1111----')
+    return { stars: json.stargazers_count }
+  }
+
   componentWillMount() {
-    this.props.getFilm(this.props.id);
+    this.props.getFilm(this.props.match.params.id);
   }
 
   render() {

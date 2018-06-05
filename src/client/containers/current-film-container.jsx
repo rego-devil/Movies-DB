@@ -6,7 +6,7 @@ import {FilmDetails} from '../components';
 const mapStateToProps = (store, ownProps) => {
     return {
         ...store.filmState,
-        ...ownProps.match.params
+        ...ownProps
     }
 }
 

@@ -43,6 +43,8 @@ const serverRenderer = (req, res) => {
       </Provider>
     );
 
+    
+    console.log(req.url);
     const htmlString = renderToString(app);
 
     if (context.url) {

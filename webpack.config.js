@@ -13,9 +13,10 @@ module.exports = {
   devtool: 'source-map',
   mode: process.env.NODE_ENV === "development" ? "development" : "production",
 
-  entry: {
-    javascript: './client/app'
-  },
+  entry: [
+    "babel-polyfill",
+    './client/app'
+  ],
 
   output: {
     filename: "[name].bundle.js",
