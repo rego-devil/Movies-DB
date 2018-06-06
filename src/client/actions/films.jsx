@@ -10,13 +10,13 @@ export const getFilms = (data, count) => ({
     count: count
 })
 
-export const failedFilms = (error) => ({
+export const abortGetFilms = (error) => ({
     type: 'GET_FILMS_FAILED',
     error: error,
 })
 
 export const currentFilm = (value) => ({
-    type: 'CURRENT_FILM_DETAILS',
+    type: 'GET_CURRENT_FILM',
     payload: value
 })
 
@@ -30,21 +30,33 @@ export const sortByParameter = (value) => ({
     payload: value
 })
 
-export const asyncGetFilms = (filterData = {}) => {
-    return (dispatch) => {
-        
-        dispatch(startFetchFilms());
-        
-        return new Api(filterData).fetchJSON().then(films => {
-            if(films.total || films.total == 0)
-                dispatch(getFilms(films.data, films.data.length));
-            else {
-               dispatch(currentFilm(films))
-            }
+//redux saga
+export const fetchFilmsAsync = (query) => ({
+    type: 'FETCH_FILMS_ASYNC',
+    payload: query
+})
 
-        }).catch(error => {
-            dispatch(failedFilms(error.message));
-        });
+export const fetchFilmByIDAsync = (id) => ({
+    type: 'FETCH_FILM_BY_ID_ASYNC',
+    payload: id
+})
 
-    }
-}
+// redux thunk
+// export const asyncGetFilms = (filterData = {}) => {
+//     return (dispatch) => {
+        
+//         dispatch(startFetchFilms());
+        
+//         return new Api(filterData).fetchJSON().then(films => {
+//             if(films.total || films.total == 0)
+//                 dispatch(getFilms(films.data, films.data.length));
+//             else {
+//                dispatch(currentFilm(films))
+//             }
+
+//         }).catch(error => {
+//             dispatch(abortGetFilms(error.message));
+//         });
+
+//     }
+// }

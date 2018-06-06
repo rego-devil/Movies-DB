@@ -2,6 +2,13 @@ import React from 'react';
 import {Context} from './context';
 import { Link } from 'react-router-dom';
 
+
+const getUrlParameter = (name, query) => {
+	name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+	const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+	const results = regex.exec(query);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
 export class Search extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,13 +21,15 @@ export class Search extends React.Component {
 		
 	}
 
-	componentWillMount() {		
-		if(this.props.location && this.props.location.search) {
-			const params = new URLSearchParams(this.props.location.search);
+	componentWillMount() {	
+		
+		if(this.props.location.search) {
+			
 
-			if(params.get('search') && params.get('searchBy')) {
-				this.props.onSearch({search: params.get('search'), searchBy: params.get('searchBy')})	
-			}
+			const search = getUrlParameter('search', this.props.location.search);
+			const searchBy = getUrlParameter('searchBy', this.props.location.search);
+		
+			this.props.onSearch({search, searchBy})	
 		}
 		
 	}

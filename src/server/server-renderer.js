@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import configureStore from '../client/store/configure-store';
 import { StaticRouter } from 'react-router-dom';
 import Routing from '../client/components/routing';
+// import rootSaga from '../client/sagas/rootSaga';
 
 const renderHTML = (html, preloadedState) => {
   return `
@@ -23,7 +24,7 @@ const renderHTML = (html, preloadedState) => {
         // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
         window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
       </script>
-      <script type="text/javascript" src="/javascript.bundle.js"></script>
+      <script type="text/javascript" src="/main.bundle.js"></script>
     </body>
     </html>
   `
@@ -35,6 +36,8 @@ const serverRenderer = (req, res) => {
     const store = configureStore();
     const context = {};
 
+    console.log(req.url);
+
     const app = (
       <Provider store={store}>
         <StaticRouter location={req.url} context={context}>
@@ -42,19 +45,28 @@ const serverRenderer = (req, res) => {
         </StaticRouter>
       </Provider>
     );
-
     
-    console.log(req.url);
-    const htmlString = renderToString(app);
+    store.runSaga().done.then(() => {
 
-    if (context.url) {
-      // Somewhere a `<Redirect>` was rendered
-      return res.redirect(context.url);
-    }
+      const htmlString = renderToString(app);
 
-    const preloadedState = store.getState();
+      if (context.url) {
+        // Somewhere a `<Redirect>` was rendered
+        return res.redirect(context.url);
+      }
 
-    res.send(renderHTML(htmlString, preloadedState));
+      const preloadedState = store.getState();
+
+      res.send(renderHTML(htmlString, preloadedState));
+
+    })
+
+    // Do first render, starts initial actions.
+    renderToString(app);
+
+    // When the first render is finished, send the END action to redux-saga.
+    store.close();
+    
     
 }
 

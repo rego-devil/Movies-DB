@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { showFilmDetails, asyncGetFilms, currentFilm } from '../actions';
+import { showFilmDetails, asyncGetFilms, currentFilm, fetchFilmByIDAsync } from '../actions';
 import {FilmDetails} from '../components';
 
 const mapStateToProps = (store, ownProps) => {
@@ -12,8 +12,8 @@ const mapStateToProps = (store, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onEmptyCurrentFilm: (obj) => dispatch(currentFilm(obj)),
-        getFilm: (id) => dispatch(asyncGetFilms(id))
+        onClearCurrentFilm: (obj) => dispatch(currentFilm(obj)),
+        getFilm: (id) => dispatch(fetchFilmByIDAsync(id))
     }
 }
 

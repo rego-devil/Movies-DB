@@ -1,26 +1,13 @@
 const express = require('express');
-const next = require('next');
+
 const serverRenderer = require('../../public/server.bundle');
 
-const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const server = express();
 
-console.log(app.prepare())
-
-app.prepare()
-  .then(() => {
-    console.log('222');
-    const server = express();
-
-    server.use(express.static('public'));
+server.use(express.static('public'));
     
-    server.get('/*', (serverRenderer) => {
-      return handle(serverRenderer)
-    })
+server.get('/*', serverRenderer);
     
-    server.listen(3000, function () {
-      console.log('Example app listening on port 3000!');
-    });
-
-})
+server.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});

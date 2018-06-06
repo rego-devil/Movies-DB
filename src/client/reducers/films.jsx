@@ -18,7 +18,7 @@ export const filmReducer = (state = initialState, action) => {
             return {...state, isFetching: false, error: action.error }
         case 'GET_FILMS_SUCCESS' :
             return {...state, isFetching: false, films: action.payload, count: action.count }
-        case 'CURRENT_FILM_DETAILS':
+        case 'GET_CURRENT_FILM':
             return {...state, isFetching: false, currentFilmDetails: action.payload }
         case 'CHOICE_SEARCH_BY':
             return {...state, searchBy: action.payload }

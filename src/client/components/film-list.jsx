@@ -15,7 +15,6 @@ export const FilmList = ({films, isFetching, error}) => (
 					films.map((item) => 
 						<li key={item.id} className="filmItem">
 							<Link to={`/film/${item.id}`} ><FilmItem {...item} /></Link>
-							{/* onClick={() =>  onShowFilmDetails(item) } */}
 						</li>
 					)
 				}

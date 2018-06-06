@@ -16,6 +16,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.2",
+    "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
@@ -24,7 +25,7 @@
     "@babel/preset-env": "^7.0.0-beta.49",
     "@babel/preset-react": "^7.0.0-beta.49",
     "babel-jest": "^22.4.3",
-    "babel-loader": "^7.1.4",
+    "babel-loader": "^8.0.0-beta.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.11",
@@ -51,16 +52,16 @@
   },
   "scripts": {
     "nodemon": "nodemon src/server/server.js --exec node",
-    "build": "npm run server-prod && npm run client-prod && node src/server/server.js",
-    "server-prod": "webpack --config=webpack.config.server.js",
-    "server-dev": "webpack --config=webpack.config.server.js --watch",
+    "build": "npm run server:production -p --progress && npm run client:production && node src/server/server.js",
+    "server:production": "webpack --config=webpack.config.server.js",
+    "server:development": "webpack --config=webpack.config.server.js --watch",
     "start": "set NODE_ENV=development&&webpack-dev-server",
-    "client-prod": "set NODE_ENV=production && webpack",
+    "client:production": "set NODE_ENV=production && webpack",
+    "client:development": "set NODE_ENV=production && webpack --watch",
     "test": "jest --config jest.config.json",
     "test:watch": "jest --config jest.config.json --watch",
     "test:coverage": "jest --config jest.config.json --coverage",
-    "babel": "babel src -d views",
-    "dev": "next start"
+    "babel": "babel src -d views"
   },
   "repository": {
     "type": "git",

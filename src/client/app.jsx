@@ -26,5 +26,3 @@ ReactDOM.hydrate(
   </Provider>,
   document.getElementById('app')
 );
-
-
