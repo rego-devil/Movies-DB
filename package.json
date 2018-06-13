@@ -68,7 +68,7 @@
     "test:watch": "jest --config jest.config.json --watch",
     "test:coverage": "jest --config jest.config.json --coverage",
     "babel": "babel src -d views",
-    "lint": "eslint ./ --fix"
+    "lint": "eslint ./src   --fix"
   },
   "repository": {
     "type": "git",

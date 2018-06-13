@@ -1,46 +1,47 @@
 import React from 'react';
-import {shallow, mount, render} from 'enzyme';
-import {FilmDetails} from '../components/film-details';
+import { shallow, mount, render } from 'enzyme';
+import { FilmDetails } from '../components/film-details';
 
 describe('film Item component', () => {
-    let renderedComponent;
-    const minProps = {
-        title: 'default',
-        genres: [],
-        release_date: '1939-08-15',
-        vote_average: 8,
-        poster_path: 'ulrToImg',
-        runtime: ''
-    }
+  let renderedComponent;
+  const minProps = {
+    title: 'default',
+    genres: [],
+    release_date: '1939-08-15',
+    vote_average: 8,
+    poster_path: 'ulrToImg',
+    runtime: '',
+  };
 
-    test('+++ Match snapshot', () => {
-        const renderedComponent = shallow(<FilmDetails {...minProps} />)
-        expect(renderedComponent).toMatchSnapshot();
-    });
+  test('+++ Match snapshot', () => {
+    const renderedComponent = shallow(<FilmDetails {...minProps} />);
+    expect(renderedComponent).toMatchSnapshot();
+  });
 
-    test('renders without crashing', () => {
-        const renderedComponent = shallow(<FilmDetails {...minProps} />)
-        expect(renderedComponent.length).toEqual(1);
+  test('renders without crashing', () => {
+    const renderedComponent = shallow(<FilmDetails {...minProps} />);
+    expect(renderedComponent.length).toEqual(1);
 
-        // console.log(renderedComponent.debug());
-    });
+    // console.log(renderedComponent.debug());
+  });
 
-    test('Check runtime condition', () => {
-        let renderedComponent, runtime;
-        
-        runtime = 128;
-        renderedComponent = shallow(<FilmDetails {...minProps} runtime={runtime}  />)
-        expect(renderedComponent.find('.filmDetails__duration').text()).toEqual(`${runtime} min.`);
+  test('Check runtime condition', () => {
+    let renderedComponent,
+      runtime;
 
-        runtime = '';
-        renderedComponent = shallow(<FilmDetails {...minProps} runtime={runtime}  />)
-        expect(renderedComponent.find('.filmDetails__duration').text()).toEqual(runtime);
+    runtime = 128;
+    renderedComponent = shallow(<FilmDetails {...minProps} runtime={runtime} />);
+    expect(renderedComponent.find('.filmDetails__duration').text()).toEqual(`${runtime} min.`);
 
-        // console.log(renderedComponent.debug());
-    });
+    runtime = '';
+    renderedComponent = shallow(<FilmDetails {...minProps} runtime={runtime} />);
+    expect(renderedComponent.find('.filmDetails__duration').text()).toEqual(runtime);
 
-    // test('click event', () => {
-    //     const wrapper = shallow(<FilmItem  />);
-    //     // wrapper.find('.filmItem').simulate('click');
-    // });
+    // console.log(renderedComponent.debug());
+  });
+
+  // test('click event', () => {
+  //     const wrapper = shallow(<FilmItem  />);
+  //     // wrapper.find('.filmItem').simulate('click');
+  // });
 });

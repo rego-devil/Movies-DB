@@ -6,6 +6,6 @@ import watchFilmByIDAsync from './films-by-id';
 export default function* rootSaga() {
   yield all([
     watchFilmsAsync(),
-    watchFilmByIDAsync()
+    watchFilmByIDAsync(),
   ]);
 }

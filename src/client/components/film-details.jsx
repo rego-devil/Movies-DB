@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Loading } from './loading';
+import Loading  from './loading';
 
 export class FilmDetails extends React.Component {
 

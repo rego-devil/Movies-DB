@@ -1,13 +1,12 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
-import configureStore from '../client/store/configure-store';
 import { StaticRouter } from 'react-router-dom';
+import configureStore from '../client/store/configure-store';
 import Routing from '../client/components/routing';
 // import rootSaga from '../client/sagas/rootSaga';
 
-const renderHTML = (html, preloadedState) => {
-  return `
+const renderHTML = (html, preloadedState) => `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -27,47 +26,39 @@ const renderHTML = (html, preloadedState) => {
       <script type="text/javascript" src="/main.bundle.js"></script>
     </body>
     </html>
-  `
-}
+  `;
 
 
 const serverRenderer = (req, res) => {
-  
-    const store = configureStore();
-    const context = {};
+  const store = configureStore();
+  const context = {};
 
-    console.log(req.url);
+  const app = (
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        <Routing />
+      </StaticRouter>
+    </Provider>
+  );
 
-    const app = (
-      <Provider store={store}>
-        <StaticRouter location={req.url} context={context}>
-          <Routing />
-        </StaticRouter>
-      </Provider>
-    );
-    
-    store.runSaga().done.then(() => {
+  store.runSaga().done.then(() => {
+    const htmlString = renderToString(app);
 
-      const htmlString = renderToString(app);
+    if (context.url) {
+      // Somewhere a `<Redirect>` was rendered
+      return res.redirect(context.url);
+    }
 
-      if (context.url) {
-        // Somewhere a `<Redirect>` was rendered
-        return res.redirect(context.url);
-      }
+    const preloadedState = store.getState();
 
-      const preloadedState = store.getState();
+    res.send(renderHTML(htmlString, preloadedState));
+  });
 
-      res.send(renderHTML(htmlString, preloadedState));
+  // Do first render, starts initial actions.
+  renderToString(app);
 
-    })
-
-    // Do first render, starts initial actions.
-    renderToString(app);
-
-    // When the first render is finished, send the END action to redux-saga.
-    store.close();
-    
-    
-}
+  // When the first render is finished, send the END action to redux-saga.
+  store.close();
+};
 
 module.exports = serverRenderer;
