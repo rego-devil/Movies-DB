@@ -23,23 +23,7 @@ export const filmReducer = (state = initialState, action) => {
         case 'CHOICE_SEARCH_BY':
             return {...state, searchBy: action.payload }
         case 'SORT_FILMS': 
-
-            const sortBy = action.payload.sortBy;
-            const sortOrder = action.payload.sortOrder;
-
-            state.films.sort((a,b) => {
-                if( sortOrder === 'desc') {
-                    if (a[sortBy] > b[sortBy]) return -1;
-                    if (a[sortBy] < b[sortBy]) return 1;
-                }
-                if( sortOrder === 'asc') {
-                    if (a[sortBy] > b[sortBy]) return 1;
-                    if (a[sortBy] < b[sortBy]) return -1;
-                }
-                return 0;
-            });
-            
-            return {...state, sortBy, sortOrder,  films: state.films }
+            return {...state, sortBy: action.payload.sortBy, sortOrder: action.payload.sortOrder}
     }
 
     return state; 

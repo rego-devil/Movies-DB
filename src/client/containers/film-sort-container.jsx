@@ -8,7 +8,7 @@ const mapStateToProps = (store) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    selectSortBy: (value) => dispatch(sortByParameter(value))
+    onSort: (value) => dispatch(sortByParameter(value))
 })
 
 export const FilmSortContainer =  connect(mapStateToProps, mapDispatchToProps)(FilmSort);
