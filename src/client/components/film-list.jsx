@@ -5,10 +5,48 @@ import { Link } from 'react-router-dom';
 
 export class FilmList extends React.Component { 
 
-	componentWillReceiveProps() {
+	constructor(props) {
+		super(props);
+
+		this.filmWrapper = React.createRef();
+	}
+
+	componentDidMount() {
+		window.addEventListener('scroll', this.handleScroll);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.handleScroll);
+	}
+
+	handleScroll = () => {
+		const {searchField, searchBy, onSearch, isFetching, total, perPage, count} = this.props;
+		const currentHeight = this.filmWrapper.current.clientHeight;
+
+        
+    if(window.scrollY > currentHeight - (window.innerHeight - 240))  {
+
+      if(!isFetching &&  total > count  ) {
+				const countOnPage = count + perPage;
+				onSearch({search: searchField, searchBy, limit: countOnPage})
+			}
+    }
+
+	}
+
+	componentWillReceiveProps(nextProps) {
 		
-		const {sortOrder, sortBy, films} = this.props;
-		films.sort((a,b) => {
+		const {sortOrder, sortBy} = this.props;
+
+		if(nextProps.sortOrder !== sortOrder || nextProps.sortBy !== sortBy ) {
+			this.sortfilm(nextProps.sortOrder, nextProps.sortBy);
+		}
+
+	}
+
+	sortfilm = (sortOrder, sortBy) => {
+
+		this.props.films.sort((a,b) => {
 			if( sortOrder === 'desc') {
 				if (a[sortBy] > b[sortBy]) return -1;
 				if (a[sortBy] < b[sortBy]) return 1;
@@ -32,7 +70,7 @@ export class FilmList extends React.Component {
 				}
 				{
 					films.length ? (
-					<ul className="filmList">
+					<ul className="filmList" ref={this.filmWrapper}>
 						{
 							films.map((item) => 
 								<li key={item.id} className="filmItem">

@@ -10,18 +10,18 @@ import style from './styles/index.scss';
 const store = configureStore(window.PRELOADED_STATE);
 delete window.PRELOADED_STATE;
 
-export const App = (props) => (
-  <ErrorBoundary>
-    {props.children}
-  </ErrorBoundary>
-)
+// export const App = (props) => (
+//   <ErrorBoundary>
+//     {props.children}
+//   </ErrorBoundary>
+// )
 
 ReactDOM.hydrate(
   <Provider store={store}>
     <Router>
-        <App>
+        <ErrorBoundary>
           <Routing />
-        </App>
+        </ErrorBoundary>
     </Router>
   </Provider>,
   document.getElementById('app')

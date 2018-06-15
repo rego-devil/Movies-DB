@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
-import { HeaderContainer } from '../containers/header-container';
+import { SearchContainer } from '../containers/search-container';
 import { Header } from '../components/header';
 import { Provider } from 'react-redux';
 import { showFilmDetails, choiceSearchBy, asyncGetFilms } from '../actions';

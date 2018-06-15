@@ -2,7 +2,6 @@ import React from 'react';
 import {Context} from './context';
 import { Link } from 'react-router-dom';
 
-
 const getUrlParameter = (name, query) => {
 	name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
 	const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -15,21 +14,20 @@ export class Search extends React.Component {
 
 		this.handleInput = this.handleInput.bind(this);
 
-		this.state = {
-			search: '',
-		}
-		
-	}
 
-	componentWillMount() {	
-		
+		let search = '';
+
 		if(this.props.location.search) {
 			
-
-			const search = getUrlParameter('search', this.props.location.search);
+			search = getUrlParameter('search', this.props.location.search);
 			const searchBy = getUrlParameter('searchBy', this.props.location.search);
+			const limit = getUrlParameter('limit', this.props.location.search);
 		
-			this.props.onSearch({search, searchBy})	
+			this.props.onSearch({search, searchBy, limit})	
+		}
+
+		this.state = {
+			search: search,
 		}
 		
 	}
@@ -49,7 +47,7 @@ export class Search extends React.Component {
 
 	render() {
 		const {search} = this.state;
-		const {onSearch, onSearchBy, searchBy} = this.props;
+		const {onSearch, onSearchBy, searchBy, perPage} = this.props;
 		return (
 			<div className="search">
 				<div className="search__title">Find your Movie</div>
@@ -68,8 +66,8 @@ export class Search extends React.Component {
 						}
 					</div>
 
-					<Link to={`/search?search=${search}&searchBy=${searchBy}`}>
-						<button className="search__button" onClick={() => onSearch({search, searchBy})}>Search</button>
+					<Link to={`/search?search=${search}&searchBy=${searchBy}&limit=${perPage}`}>
+						<button className="search__button" onClick={() => onSearch({search, searchBy, limit: perPage})}>Search</button>
 					</Link>
 				</div>
 			</div>

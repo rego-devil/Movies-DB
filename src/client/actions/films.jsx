@@ -4,10 +4,9 @@ export const startFetchFilms = () => ({
     type: 'START_FETCH_FILMS_REQUEST'
 })
 
-export const getFilms = (data, count) => ({
+export const getFilms = (data) => ({
     type: 'GET_FILMS_SUCCESS',
-    payload: data,
-    count: count
+    payload: data
 })
 
 export const abortGetFilms = (error) => ({
@@ -22,6 +21,11 @@ export const currentFilm = (value) => ({
 
 export const choiceSearchBy = (value) => ({
     type: 'CHOICE_SEARCH_BY',
+    payload: value
+})
+
+export const saveSearchParemeters = (value) => ({
+    type: 'SAVE_SEARCH_VALUES',
     payload: value
 })
 

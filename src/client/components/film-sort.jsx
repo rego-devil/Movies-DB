@@ -16,13 +16,13 @@ const sortData = [
 export class FilmSort extends React.Component { 
 
 	render() {
-		const {count, sortBy, onSort, sortOrder} = this.props;
+		const {total, sortBy, onSort, sortOrder} = this.props;
 		const sortOrderLocal = (sortOrder === 'desc' ? 'asc' : 'desc'); 
 		return (
-			count ? (
+			total ? (
 				<div className="filmSort">
-					<div className="filmSort__count">{count} 
-						{count == 1 ? ' film is found': ' films are found'  }
+					<div className="filmSort__count">{total} 
+						{total == 1 ? ' film is found': ' films are found'  }
 					</div>
 					<div className="filmSort__sortBy">
 						Sort by:

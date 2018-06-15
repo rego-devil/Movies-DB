@@ -5,13 +5,14 @@ export default class Api {
     if (typeof query === 'string') {
       this.query = query;
     } else {
-      this.query = Api.jsonToQueryString({ ...query, limit: 100 });
+      this.query = Api.jsonToQueryString({ ...query });
     }
   }
 
   static jsonToQueryString(json) {
     return `?${Object.keys(json).map(key =>
       `${encodeURIComponent(key)}=${encodeURIComponent(json[key])}`).join('&')}`;
+
   }
 
   fetchJSON() {
