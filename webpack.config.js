@@ -1,25 +1,25 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
-const APP_DIR = path.resolve(__dirname, "src");
-const BUILD_DIR = path.resolve(__dirname, "public");
+const APP_DIR = path.resolve(__dirname, 'src');
+const BUILD_DIR = path.resolve(__dirname, 'public');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  context: path.resolve(__dirname, "src"),
+  context: path.resolve(__dirname, 'src'),
   devtool: 'source-map',
-  mode: process.env.NODE_ENV === "development" ? "development" : "production",
+  mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 
   entry: [
-    "babel-polyfill",
-    './client/app'
+    'babel-polyfill',
+    './client/app',
   ],
 
   output: {
-    filename: "[name].bundle.js",
+    filename: '[name].bundle.js',
     path: BUILD_DIR,
     publicPath: '/',
   },
@@ -33,24 +33,24 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss?$/,
         use: [
           process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {loader: 'css-loader', options: { minimize: true }},
+          { loader: 'css-loader', options: { minimize: true } },
           // 'postcss-loader',
           'sass-loader',
-        ]
+        ],
         // use: ExtractTextPlugin.extract({
         //   use: [
-        //     { 
+        //     {
         //       loader: "css-loader" // translates CSS into CommonJS
-        //     }, 
-        //     { 
+        //     },
+        //     {
         //       loader: "sass-loader", // compiles SCCC to CSS
-        //     }  
+        //     }
         //   ],
         //   fallback: "style-loader"   // creates style nodes from JS strings
         // })
@@ -62,12 +62,12 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'img/',
-              name: '[name].[ext]'
-            }  
-          }
-        ]
-      }
-    ]
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
+    ],
   },
 
   resolve: {
@@ -80,16 +80,16 @@ module.exports = {
     //   disable: process.env.NODE_ENV === "development"
     // }),
     new MiniCssExtractPlugin({
-      filename: "style.css"
+      filename: 'style.css',
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-     
-    process.env.NODE_ENV === "development" && new HtmlWebpackPlugin({
-      title: "Movies-DB",
-      template: "./client/index.html",
+
+    process.env.NODE_ENV === 'development' && new HtmlWebpackPlugin({
+      title: 'Movies-DB',
+      template: './client/index.html',
       // inject: false
-    }) 
+    }),
 
   ].filter(Boolean),
 
@@ -99,7 +99,7 @@ module.exports = {
     inline: true,
     contentBase: './',
     historyApiFallback: true,
-    publicPath: "/",
+    publicPath: '/',
     // contentBase: "./public",
-  }
-}
+  },
+};
