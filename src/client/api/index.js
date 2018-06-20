@@ -12,7 +12,6 @@ export default class Api {
   static jsonToQueryString(json) {
     return `?${Object.keys(json).map(key =>
       `${encodeURIComponent(key)}=${encodeURIComponent(json[key])}`).join('&')}`;
-
   }
 
   fetchJSON() {

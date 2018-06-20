@@ -1,9 +1,18 @@
+// @flow
+
 import React from 'react';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import defaultThumb from '../images/default_thumb.png';
 
+type Props = {
+	title: string,
+	genres: Array<string>,
+	release_date: string,
+	vote_average: string,
+	poster_path: string
+}
 
-export const FilmItem = ({title, genres, release_date, vote_average, poster_path}) => {
+export const FilmItem = ({title, genres, release_date, vote_average, poster_path}: Props) => {
 
 	let genreList = genres.map((item,i) => {
 		return (i > 0 ? ', ':'') + item;
@@ -22,9 +31,9 @@ export const FilmItem = ({title, genres, release_date, vote_average, poster_path
 	)
 }
 
-FilmItem.propTypes = {
-	title: propTypes.string.isRequired,
-	release_date: propTypes.string.isRequired,
-	poster_path: propTypes.string,
-	genres: propTypes.array,
-}
+// FilmItem.propTypes = {
+// 	title: propTypes.string.isRequired,
+// 	release_date: propTypes.string.isRequired,
+// 	poster_path: propTypes.string,
+// 	genres: propTypes.array,
+// }

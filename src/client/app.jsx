@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import {ErrorBoundary} from './error-boundary';
-import { BrowserRouter as Router} from 'react-router-dom';
-import Routing  from './components/routing'
+import { ErrorBoundary } from './error-boundary';
+import Routing from './components/routing';
 import configureStore from './store/configure-store';
-import style from './styles/index.scss';
+import './styles/index.scss';
 
 const store = configureStore(window.PRELOADED_STATE);
 delete window.PRELOADED_STATE;
@@ -19,10 +19,10 @@ delete window.PRELOADED_STATE;
 ReactDOM.hydrate(
   <Provider store={store}>
     <Router>
-        <ErrorBoundary>
-          <Routing />
-        </ErrorBoundary>
+      <ErrorBoundary>
+        <Routing />
+      </ErrorBoundary>
     </Router>
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

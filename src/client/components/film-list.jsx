@@ -2,6 +2,7 @@ import React from 'react';
 import {FilmItem} from './';
 import Loading from './loading';
 import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 export class FilmList extends React.Component { 
 
@@ -10,6 +11,7 @@ export class FilmList extends React.Component {
 
 		this.filmWrapper = React.createRef();
 	}
+
 
 	componentDidMount() {
 		window.addEventListener('scroll', this.handleScroll);
@@ -21,31 +23,29 @@ export class FilmList extends React.Component {
 
 	handleScroll = () => {
 		const {searchField, searchBy, onSearch, isFetching, total, perPage, count} = this.props;
-		const currentHeight = this.filmWrapper.current.clientHeight;
 
-        
+		const currentHeight = this.filmWrapper.current.clientHeight;
+      
     if(window.scrollY > currentHeight - (window.innerHeight - 240))  {
 
       if(!isFetching &&  total > count  ) {
-				const countOnPage = count + perPage;
-				onSearch({search: searchField, searchBy, limit: countOnPage})
+				onSearch({search: searchField, searchBy, limit: count + perPage})
 			}
     }
 
 	}
 
 	componentWillReceiveProps(nextProps) {
+		const {sortOrder, sortBy, films, isFetching} = this.props;
 		
-		const {sortOrder, sortBy} = this.props;
-
-		if(nextProps.sortOrder !== sortOrder || nextProps.sortBy !== sortBy ) {
-			this.sortfilm(nextProps.sortOrder, nextProps.sortBy);
+		if(nextProps.sortOrder !== sortOrder || nextProps.sortBy !== sortBy || nextProps.films !== films ) {
+			this.sortfilm(nextProps.sortOrder, nextProps.sortBy, nextProps.films);
 		}
 
 	}
 
-	sortfilm = (sortOrder, sortBy) => {
-
+	sortfilm = (sortOrder, sortBy, films) => {
+		// console.log(this.props.films, films)
 		this.props.films.sort((a,b) => {
 			if( sortOrder === 'desc') {
 				if (a[sortBy] > b[sortBy]) return -1;
@@ -88,6 +88,13 @@ export class FilmList extends React.Component {
 			</React.Fragment>
 		)
 	}
+}
+
+FilmList.propTypes = {
+	films: propTypes.array,
+	isFetching: propTypes.bool.isRequired,
+	sortOrder: propTypes.string,
+	sortBy: propTypes.string
 }
 
 
