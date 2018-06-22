@@ -12,7 +12,24 @@ module.exports = {
   ],
   module: {
     rules: [
-      // add your custom rules.
+      // {
+      //   test: /\.jsx?$/,
+      //   exclude: /node_modules/,
+      //   use: ['babel-loader'],
+      // }
+      {
+        test: /\.(png|jpg|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'img/',
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
+
     ],
   },
 };

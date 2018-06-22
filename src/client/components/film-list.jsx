@@ -1,5 +1,5 @@
 import React from 'react';
-import {FilmItem} from './';
+import {FilmItem} from './film-item';
 import Loading from './loading';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
@@ -73,8 +73,8 @@ export class FilmList extends React.Component {
 					<ul className="filmList" ref={this.filmWrapper}>
 						{
 							films.map((item) => 
-								<li key={item.id} className="filmItem">
-									<Link to={`/film/${item.id}`} ><FilmItem {...item} /></Link>
+								<li key={item.id}>
+									<FilmItem {...item}  />
 								</li>
 							)
 						}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {SortItem} from '/';
+import {SortItem} from './film-sort-item';
 
 const sortData = [
 	{
