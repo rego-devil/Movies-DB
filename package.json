@@ -71,7 +71,7 @@
     "server:development": "webpack --config=webpack.config.server.js --watch",
     "start": "set NODE_ENV=development&&webpack-dev-server",
     "client:production": "set NODE_ENV=production && webpack",
-    "client:development": "set NODE_ENV=production && webpack --watch",
+    "client:development": "set NODE_ENV=development && webpack --watch",
     "test": "jest --config jest.config.json",
     "test:watch": "jest --config jest.config.json --watch",
     "test:coverage": "jest --config jest.config.json --coverage",

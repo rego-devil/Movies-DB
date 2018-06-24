@@ -4,7 +4,7 @@ import React from 'react';
 import injectSheet from 'react-jss';
 // import propTypes from 'prop-types';
 import defaultThumb from '../../images/default_thumb.png';
-import {styles} from './styles';
+import styles from './styles';
 
 
 type Props = {
@@ -36,7 +36,7 @@ const Film = ({classes, title, genres, release_date, vote_average, poster_path}:
 	)
 }
 
-export const FilmItem = injectSheet(styles)(Film);
+export default FilmItem = injectSheet(styles)(Film);
 
 // FilmItem.propTypes = {
 // 	title: propTypes.string.isRequired,
