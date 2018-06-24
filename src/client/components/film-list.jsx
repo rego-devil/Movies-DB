@@ -74,7 +74,9 @@ export class FilmList extends React.Component {
 						{
 							films.map((item) => 
 								<li key={item.id}>
-									<FilmItem {...item}  />
+									<Link to={`/film/${item.id}`} className="filmItem">
+										<FilmItem {...item}  />
+									</Link>
 								</li>
 							)
 						}

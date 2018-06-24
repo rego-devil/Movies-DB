@@ -12,11 +12,11 @@ module.exports = {
   ],
   module: {
     rules: [
-      // {
-      //   test: /\.jsx?$/,
-      //   exclude: /node_modules/,
-      //   use: ['babel-loader'],
-      // }
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
       {
         test: /\.(png|jpg|svg|gif)$/,
         use: [
@@ -31,5 +31,8 @@ module.exports = {
       },
 
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 };

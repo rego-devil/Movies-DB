@@ -17,7 +17,7 @@ export class Search extends React.Component {
 
 		let search = '';
 
-		if(this.props.location.search) {
+		if(this.props.location && this.props.location.search) {
 			
 			search = getUrlParameter('search', this.props.location.search);
 			const searchBy = getUrlParameter('searchBy', this.props.location.search);
