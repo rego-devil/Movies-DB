@@ -36,7 +36,9 @@ const Film = ({classes, title, genres, release_date, vote_average, poster_path}:
 	)
 }
 
-export default FilmItem = injectSheet(styles)(Film);
+const FilmItem = injectSheet(styles)(Film);
+
+export default FilmItem;
 
 // FilmItem.propTypes = {
 // 	title: propTypes.string.isRequired,

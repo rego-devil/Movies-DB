@@ -87,7 +87,7 @@ module.exports = {
 
     process.env.NODE_ENV === 'development' && new HtmlWebpackPlugin({
       title: 'Movies-DB',
-      template: './src/client/index.html',
+      template: './client/index.html',
       // inject: false
     }),
 
