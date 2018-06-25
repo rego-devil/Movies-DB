@@ -1,5 +1,5 @@
 import React from 'react';
-import {FilmItem} from './film-item';
+import FilmItem from './film-item';
 import Loading from './loading';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
@@ -10,8 +10,8 @@ export class FilmList extends React.Component {
 		super(props);
 
 		this.filmWrapper = React.createRef();
+		this.state = { films: this.props.films}
 	}
-
 
 	componentDidMount() {
 		window.addEventListener('scroll', this.handleScroll);
@@ -37,16 +37,19 @@ export class FilmList extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		const {sortOrder, sortBy, films, isFetching} = this.props;
-		
+
 		if(nextProps.sortOrder !== sortOrder || nextProps.sortBy !== sortBy || nextProps.films !== films ) {
-			this.sortfilm(nextProps.sortOrder, nextProps.sortBy, nextProps.films);
+			this.setState((prevState, props) => ({films: props.films }));
+			// this.setState({films: this.props.films });
+			
+			this.sortfilm(nextProps.sortOrder, nextProps.sortBy);
+			
 		}
 
 	}
 
-	sortfilm = (sortOrder, sortBy, films) => {
-		// console.log(this.props.films, films)
-		this.props.films.sort((a,b) => {
+	sortfilm = (sortOrder, sortBy) => {
+		this.state.films.sort((a,b) => {
 			if( sortOrder === 'desc') {
 				if (a[sortBy] > b[sortBy]) return -1;
 				if (a[sortBy] < b[sortBy]) return 1;
@@ -61,8 +64,8 @@ export class FilmList extends React.Component {
 	}
 
 	render() {
-		const {films, isFetching, error, sortOrder, sortBy} = this.props;
-	
+		const {isFetching, error, sortOrder, sortBy} = this.props;
+		const {films} = this.state;
 		return (
 			<React.Fragment>
 				{
