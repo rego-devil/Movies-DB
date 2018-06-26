@@ -9,7 +9,7 @@ module.exports = {
 
   externals: [nodeExternals()],
 
-  entry: ['babel-polyfill','./server/server-renderer.js'],
+  entry: ['@babel/polyfill','./server/server-renderer'],
 
   output: {
     path:  path.resolve(__dirname, "public"),

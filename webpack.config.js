@@ -12,11 +12,8 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   devtool: 'source-map',
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-
-  entry: [
-    'babel-polyfill',
-    './client/app',
-  ],
+  
+  entry: ['@babel/polyfill','./client/app',],
 
   output: {
     filename: '[name].bundle.js',
